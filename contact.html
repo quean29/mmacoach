@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact – Konmon Deh</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --red: #e8212e; --red-dark: #c41a26;
+      --dark: #0d0d0d; --dark2: #141414; --dark3: #1c1c1c;
+      --muted: #777;
+      --font-d: 'Oswald', sans-serif;
+      --font-b: 'Barlow', sans-serif;
+      --font-c: 'Barlow Condensed', sans-serif;
+    }
+    body { background: var(--dark); color: #f0f0f0; font-family: var(--font-b); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+    /* NAVBAR */
+    .navbar { background: rgba(10,10,10,.95) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .navbar-brand { font-family: var(--font-d); font-size: 1.9rem; font-weight: 700; letter-spacing: 3px; color: #fff !important; }
+    .navbar-brand span { color: var(--red); }
+    .navbar-nav .nav-link { font-family: var(--font-d); font-size: .82rem; letter-spacing: 2px; text-transform: uppercase; color: #ccc !important; padding: 8px 14px !important; position: relative; transition: color .25s; }
+    .navbar-nav .nav-link::after { content: ''; position: absolute; bottom: 0; left: 14px; right: 100%; height: 2px; background: var(--red); transition: right .3s; }
+    .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active-link { color: #fff !important; }
+    .navbar-nav .nav-link:hover::after, .navbar-nav .nav-link.active-link::after { right: 14px; }
+    .btn-nav-cta { background: var(--red) !important; color: #fff !important; border-radius: 0 !important; font-family: var(--font-d); font-size: .8rem; letter-spacing: 2px; text-transform: uppercase; }
+    .btn-nav-cta:hover { background: var(--red-dark) !important; }
+    .navbar-toggler { border-color: rgba(255,255,255,.2); }
+    .navbar-toggler-icon { filter: invert(1); }
+
+    /* PAGE HERO */
+    .page-hero {
+      min-height: 300px; margin-top: 60px;
+      background: linear-gradient(135deg,rgba(232,33,46,.2) 0%,transparent 55%),
+        linear-gradient(to bottom,rgba(13,13,13,.25),rgba(13,13,13,.88)),
+        url('assets/breadcrumbs-bg-copyright.jpg') center/cover no-repeat;
+      display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center;
+      border-left: 5px solid var(--red);
+    }
+    .page-hero h1 { font-family: var(--font-c); font-size: clamp(2.8rem,6vw,5rem); font-weight: 800; text-transform: uppercase; color: #fff; letter-spacing: 3px; animation: fadeDown .8s ease both; }
+    @keyframes fadeDown { from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);} }
+    .breadcrumb-custom { font-family: var(--font-d); font-size: .76rem; letter-spacing: 2px; text-transform: uppercase; animation: fadeDown .8s ease .15s both; }
+    .breadcrumb-custom a { color: var(--red); }
+    .breadcrumb-custom span { color: rgba(255,255,255,.2); }
+
+    /* MAP */
+    .map-wrap { height: 400px; overflow: hidden; position: relative; }
+    .map-wrap iframe { width: 100%; height: 100%; border: 0; filter: invert(90%) hue-rotate(180deg) brightness(.85) contrast(1.1); }
+    .map-wrap::after { content: ''; position: absolute; inset: 0; background: rgba(232,33,46,.05); pointer-events: none; }
+    .map-pin { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--red); color: #fff; z-index: 2; padding: 10px 26px; font-family: var(--font-d); font-size: .75rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; white-space: nowrap; clip-path: polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px)); }
+
+    /* SHARED */
+    .section-tag { font-family: var(--font-d); font-size: .74rem; letter-spacing: 4px; text-transform: uppercase; color: var(--red); display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .section-tag::before { content: ''; display: inline-block; width: 28px; height: 2px; background: var(--red); }
+    .section-title { font-family: var(--font-c); font-size: clamp(2rem,4vw,3rem); font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.05; }
+    .red-divider { width: 48px; height: 3px; background: var(--red); }
+
+    /* FORM PANEL */
+    .form-panel { background: var(--dark2); }
+    .form-control-dark {
+      background: var(--dark3) !important; border: 1px solid rgba(255,255,255,.08) !important;
+      color: #fff !important; font-family: var(--font-b); font-size: .95rem; padding: 13px 16px;
+      border-radius: 0 !important; outline: none;
+      transition: border-color .25s, background .25s;
+    }
+    .form-control-dark::placeholder { color: rgba(255,255,255,.25) !important; }
+    .form-control-dark:focus { border-color: var(--red) !important; background: rgba(232,33,46,.04) !important; box-shadow: none !important; }
+    .form-label-dark { font-family: var(--font-d); font-size: .7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    .btn-submit {
+      background: var(--red); color: #fff; border: none;
+      font-family: var(--font-d); font-size: .83rem; letter-spacing: 2.5px;
+      text-transform: uppercase; font-weight: 600; padding: 14px 44px;
+      clip-path: polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+      transition: background .25s, transform .2s;
+    }
+    .btn-submit:hover { background: var(--red-dark); transform: translateY(-2px); }
+    .toast-success { background: rgba(40,160,80,.12); border: 1px solid rgba(40,160,80,.35); color: #5fe08a; font-family: var(--font-d); font-size: .78rem; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* INFO PANEL */
+    .info-panel { background: var(--dark); border-left: 1px solid rgba(255,255,255,.05); }
+    .info-panel h3 { font-family: var(--font-c); font-size: 1.6rem; font-weight: 800; text-transform: uppercase; color: #fff; letter-spacing: 1px; }
+    .info-item { border-bottom: 1px solid rgba(255,255,255,.06); transition: background .2s; }
+    .info-item:last-of-type { border-bottom: none; }
+    .info-icon { width: 46px; height: 46px; background: rgba(232,33,46,.1); border: 1px solid rgba(232,33,46,.25); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .25s; }
+    .info-item:hover .info-icon { background: var(--red); }
+    .info-item:hover .info-icon i { color: #fff; }
+    .info-icon i { color: var(--red); font-size: 1.1rem; transition: color .25s; }
+    .info-label { font-family: var(--font-d); font-size: .66rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    .info-value { font-family: var(--font-d); font-size: 1rem; color: #fff; font-weight: 500; }
+    .info-value.small { font-family: var(--font-b); font-size: .9rem; font-weight: 400; color: rgba(255,255,255,.65); }
+
+    /* HOURS */
+    .hours-box { background: var(--dark3); border: 1px solid rgba(255,255,255,.06); }
+    .hours-day { font-size: .88rem; color: rgba(255,255,255,.5); }
+    .hours-time { font-family: var(--font-d); font-size: .85rem; letter-spacing: 1px; color: var(--red); }
+    .hours-day.today, .hours-time.today { color: #fff; font-weight: 600; }
+
+    /* SOCIAL */
+    .social-btn { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: var(--muted); font-family: var(--font-d); font-size: .75rem; transition: border-color .25s, background .25s, color .25s; }
+    .social-btn:hover { border-color: var(--red); background: var(--red); color: #fff; }
+
+    /* FOOTER */
+    .site-footer { background: #080808; border-top: 1px solid rgba(255,255,255,.06); }
+    .footer-logo { font-family: var(--font-d); font-size: 1.8rem; font-weight: 700; letter-spacing: 3px; color: #fff; }
+    .footer-logo span { color: var(--red); }
+    .footer-desc { font-size: .88rem; line-height: 1.8; color: rgba(255,255,255,.38); }
+    .footer-heading { font-family: var(--font-d); font-size: .76rem; letter-spacing: 3px; text-transform: uppercase; color: #fff; border-bottom: 1px solid rgba(255,255,255,.07); padding-bottom: 10px; margin-bottom: 16px; }
+    .footer-link-list { list-style: none; padding: 0; }
+    .footer-link-list li + li { margin-top: 8px; }
+    .footer-link-list a { font-size: .88rem; color: rgba(255,255,255,.4); display: flex; align-items: center; gap: 8px; transition: color .25s, padding-left .25s; }
+    .footer-link-list a::before { content: '—'; font-size: .65rem; color: var(--red); }
+    .footer-link-list a:hover { color: #fff; padding-left: 4px; }
+    .footer-copy { font-size: .82rem; color: rgba(255,255,255,.26); }
+    .footer-copy span { color: var(--red); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-1 { transition-delay: .1s; }
+    .reveal-2 { transition-delay: .2s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top py-2">
+    <div class="container-fluid px-4 px-lg-5">
+      <a class="navbar-brand" href="index.html"><span>KONMON</span>DEH</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="coaching.html">Coaching</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item ms-lg-2"><a class="nav-link btn btn-nav-cta px-3 py-2 active-link" href="contact.html">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero py-5">
+    <h1>Contacts</h1>
+    <div class="breadcrumb-custom d-flex align-items-center gap-2 mt-3">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <span style="color:#fff">Contacts</span>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-wrap">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215226979762!2d-74.00369428459408!3d40.74881967932851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2s1521%20Farnum%20Rd%2C%20New%20York%2C%20NY%2010011!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen loading="lazy" title="Konmon Deh Location"></iframe>
+    <div class="map-pin">91 Bd Poniatowski, 75012 Paris, France</div>
+  </div>
+
+  <!-- CONTACT MAIN -->
+  <div class="row g-0">
+
+    <!-- FORM -->
+    <div class="col-12 col-lg-7 form-panel py-5 px-4 px-lg-5">
+      <div class="section-tag reveal">Send Us a Message</div>
+      <h2 class="section-title reveal reveal-1">Get In <span style="color:var(--red)">Touch</span></h2>
+      <div class="red-divider mt-3 mb-4 reveal reveal-1"></div>
+
+      <form id="contactForm" novalidate>
+        <div class="row g-3 mb-3">
+          <div class="col-12 col-sm-6 reveal">
+            <label class="form-label-dark mb-1">First Name *</label>
+            <input type="text" class="form-control form-control-dark" placeholder="John" required/>
+          </div>
+          <div class="col-12 col-sm-6 reveal reveal-1">
+            <label class="form-label-dark mb-1">Last Name *</label>
+            <input type="text" class="form-control form-control-dark" placeholder="Doe" required/>
+          </div>
+        </div>
+        <div class="row g-3 mb-3">
+          <div class="col-12 col-sm-6 reveal">
+            <label class="form-label-dark mb-1">Email Address *</label>
+            <input type="email" class="form-control form-control-dark" placeholder="you@example.com" required/>
+          </div>
+          <div class="col-12 col-sm-6 reveal reveal-1">
+            <label class="form-label-dark mb-1">Phone Number</label>
+            <input type="tel" class="form-control form-control-dark" placeholder="+1 (212) 000-0000"/>
+          </div>
+        </div>
+        <div class="mb-3 reveal">
+          <label class="form-label-dark mb-1">Subject</label>
+          <select class="form-control form-control-dark" style="appearance:none">
+            <option value="" disabled selected>Select a topic…</option>
+            <option>General Inquiry</option>
+            <option>Training Sessions</option>
+            <option>Event Booking</option>
+            <option>Merchandise / Shop</option>
+            <option>Media &amp; Press</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="mb-3 reveal">
+          <label class="form-label-dark mb-1">Your Message *</label>
+          <textarea class="form-control form-control-dark" rows="5" placeholder="Write your message here…" required></textarea>
+        </div>
+        <div class="d-flex align-items-start gap-2 mb-4 reveal">
+          <input type="checkbox" class="form-check-input mt-1" id="consent" style="accent-color:var(--red);background:var(--dark3);border-color:rgba(255,255,255,.2);border-radius:0" required/>
+          <label class="form-check-label" for="consent" style="font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.6">
+            I agree that my submitted data is being collected and stored. Read our <a href="#" style="color:var(--red);border-bottom:1px solid rgba(232,33,46,.35)">Privacy Policy</a>.
+          </label>
+        </div>
+        <button type="submit" class="btn-submit reveal">Send Message</button>
+        <div id="successToast" class="toast-success d-none d-flex align-items-center gap-2 p-3 mt-3">
+          <i class="bi bi-check-circle-fill text-success"></i>
+          Message sent! We'll get back to you soon.
+        </div>
+      </form>
+    </div>
+
+    <!-- INFO -->
+    <div class="col-12 col-lg-5 info-panel py-5 px-4 px-lg-5">
+      <h3 class="reveal mb-1">Contact Info</h3>
+      <div class="red-divider mt-2 mb-4 reveal reveal-1"></div>
+
+      <a href="mailto:info@yourmail.com" class="info-item d-flex align-items-start gap-3 py-4 reveal">
+        <div class="info-icon"><i class="bi bi-envelope-fill"></i></div>
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-value">info@yourmail.com</div>
+        </div>
+      </a>
+
+      <a href="tel:2123280493" class="info-item d-flex align-items-start gap-3 py-4 reveal reveal-1">
+        <div class="info-icon"><i class="bi bi-telephone-fill"></i></div>
+        <div>
+          <div class="info-label">Phone</div>
+          <div class="info-value">212-328-0493</div>
+        </div>
+      </a>
+
+      <div class="info-item d-flex align-items-start gap-3 py-4 reveal reveal-1">
+        <div class="info-icon"><i class="bi bi-geo-alt-fill"></i></div>
+        <div>
+          <div class="info-label">Address</div>
+          <div class="info-value small">91 Bd Poniatowski<br>75012 Paris, France</div>
+        </div>
+      </div>
+
+      <!-- Hours -->
+      <div class="hours-box p-3 mt-2 mb-4 reveal reveal-2">
+        <div class="row g-2">
+          <div class="col-7 hours-day today">Monday – Friday</div>
+          <div class="col-5 hours-time today text-end">9:00 – 21:00</div>
+          <div class="col-7 hours-day">Saturday</div>
+          <div class="col-5 hours-time text-end">10:00 – 18:00</div>
+          <div class="col-7 hours-day">Sunday</div>
+          <div class="col-5 hours-time text-end" style="color:var(--muted)">Closed</div>
+        </div>
+      </div>
+
+      <div class="d-flex gap-2 reveal">
+        <a class="social-btn" href="https://www.instagram.com/konmon_deh" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a class="social-btn" href="https://www.facebook.com/konmon.deh/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <!-- <a class="social-btn" href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a class="social-btn" href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a> -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer py-5">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row g-5 mb-5">
+        <div class="col-12 col-lg-4">
+          <div class="footer-logo mb-3"><span>KONMON</span>DEH</div>
+          <p class="footer-desc mb-3">The official website of Konmon Deh — Head Coach MMA, Double European Champion, and performance architect guiding elite fighters to world titles.</p>
+          <div class="d-flex gap-2">
+            <a class="social-btn" href="https://www.instagram.com/konmon_deh" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a class="social-btn" href="https://www.facebook.com/konmon.deh/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <!-- <a class="social-btn" href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a class="social-btn" href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a> -->
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="footer-heading">Navigation</div>
+          <ul class="footer-link-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Biography</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">News</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="footer-heading">Pages</div>
+          <ul class="footer-link-list">
+            <li><a href="coaching.html">Coaching</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="footer-heading">Shop</div>
+          <ul class="footer-link-list">
+            <li><a href="#">Challenger Gloves</a></li>
+            <li><a href="#">Handwraps</a></li>
+            <li><a href="#">Headguard</a></li>
+            <li><a href="#">Sparring Gloves</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-top border-secondary pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+        <p class="footer-copy mb-0">© 2026 <span>Coach Konmon</span>. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const obs = new IntersectionObserver(e => e.forEach(en => { if(en.isIntersecting){ en.target.classList.add('visible'); obs.unobserve(en.target); } }), {threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    const nav = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => nav.style.background = scrollY > 60 ? 'rgba(8,8,8,.98)' : '');
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const toast = document.getElementById('successToast');
+      const required = this.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(f => {
+        if(f.type==='checkbox'&&!f.checked){ f.style.outline='2px solid var(--red)'; valid=false; }
+        else if(f.type!=='checkbox'&&!f.value.trim()){ f.style.borderColor='var(--red)'; valid=false; }
+        else { f.style.borderColor=''; f.style.outline=''; }
+      });
+      if(!valid) return;
+      toast.classList.remove('d-none');
+      setTimeout(()=>toast.classList.add('d-none'), 4000);
+      this.reset();
+    });
+  </script>
+
+
+<div class="gtranslate_wrapper"></div>
+    <script>window.gtranslateSettings = {"default_language":"en","detect_browser_language":true, "wrapper_selector":".gtranslate_wrapper","alt_flags":{"en": "usa"}}</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+
+
+</body>
+</html>

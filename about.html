@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biography – Konmon Deh</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --red:      #e8212e;
+      --red-dark: #c41a26;
+      --dark:     #0d0d0d;
+      --dark2:    #141414;
+      --dark3:    #1c1c1c;
+      --dark4:    #222222;
+      --muted:    #777;
+      --font-d:   'Oswald', sans-serif;
+      --font-b:   'Barlow', sans-serif;
+      --font-c:   'Barlow Condensed', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark); color: #f0f0f0; font-family: var(--font-b); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark2); }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+    /* ── NAVBAR ── */
+    .navbar { background: rgba(10,10,10,.95) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.06); transition: background .3s; }
+    .navbar-brand { font-family: var(--font-d); font-size: 1.9rem; font-weight: 700; letter-spacing: 3px; color: #fff !important; }
+    .navbar-brand span { color: var(--red); }
+    .navbar-nav .nav-link { font-family: var(--font-d); font-size: .82rem; letter-spacing: 2px; text-transform: uppercase; color: #ccc !important; padding: 8px 14px !important; position: relative; transition: color .25s; }
+    .navbar-nav .nav-link::after { content: ''; position: absolute; bottom: 0; left: 14px; right: 100%; height: 2px; background: var(--red); transition: right .3s; }
+    .navbar-nav .nav-link:hover, .nav-link.active-page { color: #fff !important; }
+    .navbar-nav .nav-link:hover::after, .nav-link.active-page::after { right: 14px; }
+    .btn-nav-cta { background: var(--red) !important; color: #fff !important; border-radius: 0 !important; font-family: var(--font-d); font-size: .8rem; letter-spacing: 2px; text-transform: uppercase; }
+    .btn-nav-cta:hover { background: var(--red-dark) !important; }
+    .navbar-toggler { border-color: rgba(255,255,255,.2); }
+    .navbar-toggler-icon { filter: invert(1); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      min-height: 340px; margin-top: 62px;
+      background:
+        linear-gradient(135deg, rgba(232,33,46,.22) 0%, transparent 50%),
+        linear-gradient(to bottom, rgba(13,13,13,.25) 0%, rgba(13,13,13,.88) 100%),
+        url('assets/konmon8.png') center/cover no-repeat;
+      display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center;
+      border-left: 5px solid var(--red);
+      position: relative; overflow: hidden;
+    }
+    .page-hero::after {
+      content: 'KONMON';
+      position: absolute; right: -30px; bottom: -30px;
+      font-family: var(--font-c); font-size: 14rem; font-weight: 800;
+      color: rgba(255,255,255,.03); line-height: 1; pointer-events: none;
+    }
+    .page-hero h1 { font-family: var(--font-c); font-size: clamp(3rem,6vw,5.5rem); font-weight: 800; text-transform: uppercase; color: #fff; letter-spacing: 3px; animation: fadeDown .8s ease both; }
+    @keyframes fadeDown { from{opacity:0;transform:translateY(-18px);}to{opacity:1;transform:translateY(0);} }
+    .breadcrumb-wrap { font-family: var(--font-d); font-size: .76rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); animation: fadeDown .8s ease .15s both; }
+    .breadcrumb-wrap a { color: var(--red); transition: color .2s; }
+    .breadcrumb-wrap a:hover { color: #fff; }
+    .breadcrumb-wrap span { color: rgba(255,255,255,.2); }
+
+    /* ── SHARED ── */
+    .section-tag { font-family: var(--font-d); font-size: .73rem; letter-spacing: 4px; text-transform: uppercase; color: var(--red); display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .section-tag::before { content: ''; display: inline-block; width: 28px; height: 2px; background: var(--red); }
+    .section-tag.center { justify-content: center; }
+    .section-tag.center::before { display: none; }
+    .section-title { font-family: var(--font-c); font-size: clamp(2rem,4vw,3.2rem); font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.05; }
+    .red-divider { width: 48px; height: 3px; background: var(--red); }
+    .muted-text { color: rgba(255,255,255,.55); line-height: 1.88; font-size: .97rem; }
+    .btn-primary-red {
+      display: inline-block; background: var(--red); color: #fff; border: none;
+      font-family: var(--font-d); font-size: .83rem; letter-spacing: 2px; text-transform: uppercase;
+      font-weight: 600; padding: 14px 38px;
+      clip-path: polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+      transition: background .25s, transform .2s;
+    }
+    .btn-primary-red:hover { background: var(--red-dark); color: #fff; transform: translateY(-2px); }
+    .btn-outline-light-custom {
+      display: inline-block; background: transparent; color: #ccc;
+      border: 2px solid rgba(255,255,255,.2);
+      font-family: var(--font-d); font-size: .83rem; letter-spacing: 2px; text-transform: uppercase;
+      font-weight: 600; padding: 12px 36px;
+      transition: border-color .25s, background .25s, color .25s, transform .2s;
+    }
+    .btn-outline-light-custom:hover { border-color: var(--red); background: rgba(232,33,46,.1); color: #fff; transform: translateY(-2px); }
+
+    /* ── QUICK STATS BAR ── */
+    .stats-bar { background: var(--red); }
+    .stat-cell { padding: 32px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,.15); }
+    .stat-cell:last-child { border-right: none; }
+    .stat-num { font-family: var(--font-c); font-size: 2.8rem; font-weight: 800; color: #fff; line-height: 1; }
+    .stat-sup { font-size: 1.5rem; color: rgba(255,255,255,.6); }
+    .stat-lbl { font-family: var(--font-d); font-size: .68rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.7); margin-top: 4px; }
+
+    /* ── EARLY DAYS ── */
+    .early-section { background: var(--dark2); }
+    .bio-img-wrap { position: relative; overflow: hidden; }
+    .bio-img-wrap img { width: 100%; height: 560px; object-fit: cover; filter: brightness(.7); transition: transform .6s ease; }
+    .bio-img-wrap:hover img { transform: scale(1.04); }
+    .bio-img-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: var(--red); padding: 14px 22px;
+      font-family: var(--font-d); font-size: .75rem; letter-spacing: 3px;
+      text-transform: uppercase; color: #fff; font-weight: 600;
+    }
+
+    /* pull-quote */
+    .pull-quote {
+      border-left: 3px solid var(--red);
+      padding: 18px 22px;
+      background: rgba(232,33,46,.06);
+      font-family: var(--font-d); font-size: 1.05rem; font-weight: 600;
+      letter-spacing: .5px; color: rgba(255,255,255,.85); line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* ── FIGHT RECORD ── */
+    .record-section { background: var(--dark); }
+    .record-table { width: 100%; border-collapse: collapse; }
+    .record-table thead tr { background: var(--red); }
+    .record-table thead th {
+      font-family: var(--font-d); font-size: .72rem; letter-spacing: 3px; text-transform: uppercase;
+      color: #fff; padding: 14px 18px; font-weight: 600; border: none;
+    }
+    .record-table tbody tr {
+      background: var(--dark3); border-bottom: 1px solid rgba(255,255,255,.05);
+      transition: background .2s;
+    }
+    .record-table tbody tr:nth-child(even) { background: var(--dark4); }
+    .record-table tbody tr:hover { background: rgba(232,33,46,.07); }
+    .record-table tbody td {
+      padding: 13px 18px; font-size: .9rem; color: rgba(255,255,255,.65);
+      font-family: var(--font-b); vertical-align: middle;
+    }
+    .record-table tbody td:first-child { color: var(--muted); font-size: .82rem; font-family: var(--font-d); letter-spacing: 1px; }
+    .record-table tbody td:last-child { font-family: var(--font-d); font-weight: 600; letter-spacing: 1px; }
+    .result-w  { color: #5fe08a; }
+    .result-l  { color: var(--red); }
+    .result-d  { color: #f0c040; }
+    /* win/loss/draw pill */
+    .result-badge {
+      display: inline-block; padding: 3px 10px;
+      font-family: var(--font-d); font-size: .68rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
+    }
+    .result-badge.w { background: rgba(95,224,138,.12); border: 1px solid rgba(95,224,138,.3); color: #5fe08a; }
+    .result-badge.l { background: rgba(232,33,46,.12); border: 1px solid rgba(232,33,46,.3); color: var(--red); }
+    .result-badge.d { background: rgba(240,192,64,.12); border: 1px solid rgba(240,192,64,.3); color: #f0c040; }
+
+    /* ── RECENT FIGHTS ── */
+    .recent-section { background: var(--dark2); }
+    .recent-img-wrap { position: relative; overflow: hidden; }
+    .recent-img-wrap img { width: 100%; height: 500px; object-fit: cover; filter: brightness(.6); transition: transform .6s; }
+    .recent-img-wrap:hover img { transform: scale(1.04); }
+    .recent-badge { position: absolute; top: 24px; left: 24px; background: var(--red); color: #fff; padding: 7px 18px; font-family: var(--font-d); font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; }
+
+    /* fight highlights list */
+    .fight-item {
+      display: flex; align-items: center; gap: 18px;
+      padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.06);
+      transition: padding-left .25s;
+    }
+    .fight-item:last-child { border-bottom: none; }
+    .fight-item:hover { padding-left: 6px; }
+    .fight-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
+    .fight-meta { font-family: var(--font-d); font-size: .7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    .fight-name { font-family: var(--font-d); font-size: 1rem; font-weight: 600; text-transform: uppercase; color: #fff; letter-spacing: 1px; }
+    .fight-result { font-family: var(--font-c); font-size: 1.1rem; font-weight: 800; }
+
+    /* ── MOVIE SECTION ── */
+    .movie-section { background: var(--dark3); }
+    .movie-video-wrap {
+      position: relative; overflow: hidden; cursor: pointer;
+      background: #000;
+    }
+    .movie-video-wrap img { width: 100%; height: 460px; object-fit: cover; filter: brightness(.45); transition: transform .6s, filter .6s; }
+    .movie-video-wrap:hover img { transform: scale(1.04); filter: brightness(.3); }
+    .movie-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(13,13,13,.7) 0%, transparent 60%); }
+    .play-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 76px; height: 76px; border-radius: 50%; background: var(--red);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 16px rgba(232,33,46,.18);
+      transition: transform .3s, background .3s;
+    }
+    .play-btn i { color: #fff; font-size: 1.6rem; margin-left: 5px; }
+    .movie-video-wrap:hover .play-btn { transform: translate(-50%,-50%) scale(1.12); background: var(--red-dark); }
+    .movie-text-panel { background: var(--dark3); display: flex; flex-direction: column; justify-content: center; }
+
+    /* ── GALLERY ── */
+    .gallery-section { background: var(--dark2); }
+    .gallery-item { position: relative; overflow: hidden; cursor: pointer; }
+    .gallery-item img { width: 100%; object-fit: cover; filter: brightness(.65); transition: transform .5s ease, filter .5s ease; display: block; }
+    .gallery-item:hover img { transform: scale(1.08); filter: brightness(.4); }
+    .gallery-item-tall img { height: 340px; }
+    .gallery-item-short img { height: 160px; }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: rgba(232,33,46,0); display: flex; align-items: center; justify-content: center;
+      transition: background .35s;
+    }
+    .gallery-item:hover .gallery-overlay { background: rgba(232,33,46,.15); }
+    .gallery-overlay i { color: #fff; font-size: 1.8rem; opacity: 0; transform: scale(.7); transition: opacity .3s, transform .3s; }
+    .gallery-item:hover .gallery-overlay i { opacity: 1; transform: scale(1); }
+
+    /* lightbox */
+    .lightbox-backdrop {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,.92); align-items: center; justify-content: center;
+    }
+    .lightbox-backdrop.show { display: flex; }
+    .lightbox-img { max-width: 90vw; max-height: 88vh; object-fit: contain; animation: lbFade .3s ease; }
+    @keyframes lbFade { from{opacity:0;transform:scale(.94);}to{opacity:1;transform:scale(1);} }
+    .lightbox-close {
+      position: absolute; top: 24px; right: 28px;
+      width: 42px; height: 42px; border-radius: 50%; background: var(--red);
+      border: none; color: #fff; font-size: 1.3rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .25s;
+    }
+    .lightbox-close:hover { background: var(--red-dark); }
+    .lightbox-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 46px; height: 46px; border-radius: 50%; background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2); color: #fff; font-size: 1.3rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background .25s;
+    }
+    .lightbox-nav:hover { background: var(--red); border-color: var(--red); }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
+    .lightbox-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-family: var(--font-d); font-size: .76rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.5); }
+
+    /* ── FOOTER ── */
+    .site-footer { background: #080808; border-top: 1px solid rgba(255,255,255,.06); }
+    .footer-logo { font-family: var(--font-d); font-size: 1.8rem; font-weight: 700; letter-spacing: 3px; color: #fff; }
+    .footer-logo span { color: var(--red); }
+    .footer-desc { font-size: .88rem; line-height: 1.8; color: rgba(255,255,255,.38); }
+    .footer-heading { font-family: var(--font-d); font-size: .75rem; letter-spacing: 3px; text-transform: uppercase; color: #fff; border-bottom: 1px solid rgba(255,255,255,.07); padding-bottom: 10px; margin-bottom: 16px; }
+    .footer-link-list { list-style: none; padding: 0; }
+    .footer-link-list li + li { margin-top: 8px; }
+    .footer-link-list a { font-size: .88rem; color: rgba(255,255,255,.4); display: flex; align-items: center; gap: 8px; transition: color .25s, padding-left .25s; }
+    .footer-link-list a::before { content: '—'; font-size: .65rem; color: var(--red); }
+    .footer-link-list a:hover { color: #fff; padding-left: 4px; }
+    .social-btn { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: var(--muted); font-family: var(--font-d); font-size: .75rem; transition: border-color .25s, background .25s, color .25s; }
+    .social-btn:hover { border-color: var(--red); background: var(--red); color: #fff; }
+    .footer-copy { font-size: .82rem; color: rgba(255,255,255,.26); }
+    .footer-copy span { color: var(--red); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-1 { transition-delay: .12s; }
+    .reveal-2 { transition-delay: .22s; }
+    .reveal-3 { transition-delay: .32s; }
+
+    /* Utility */
+    .py-lg-6 { padding-top: 5rem !important; padding-bottom: 5rem !important; }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar navbar-expand-lg fixed-top py-2">
+    <div class="container-fluid px-4 px-lg-5">
+      <a class="navbar-brand" href="index.html"><span>KONMON</span>DEH</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="coaching.html">Coaching</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="nav-link btn btn-nav-cta px-3 py-2" href="contact.html">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══ PAGE HERO ══ -->
+  <div class="page-hero py-5">
+    <div class="position-relative z-1 text-center">
+      <h1>Biography</h1>
+      <div class="breadcrumb-wrap d-flex align-items-center justify-content-center gap-2 mt-3">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span style="color:#fff">Biography</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ QUICK STATS BAR ══ -->
+  <div class="stats-bar">
+    <div class="row g-0">
+      <div class="col-6 col-lg-3 stat-cell reveal">
+        <div class="stat-num"><span class="count-up" data-target="20">0</span>+</div>
+        <div class="stat-lbl">Years Experience</div>
+      </div>
+      <div class="col-6 col-lg-3 stat-cell reveal reveal-1">
+        <div class="stat-num"><span class="count-up" data-target="3">0</span></div>
+        <div class="stat-lbl">World Champions</div>
+      </div>
+      <div class="col-6 col-lg-3 stat-cell reveal reveal-2">
+        <div class="stat-num"><span class="count-up" data-target="3">0</span></div>
+        <div class="stat-lbl">European Titles</div>
+      </div>
+      <div class="col-6 col-lg-3 stat-cell reveal reveal-3">
+        <div class="stat-num"><span class="count-up" data-target="2">0</span></div>
+        <div class="stat-lbl">State Diplomas</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ EARLY DAYS ══ -->
+  <section class="early-section py-5 py-lg-6" id="early-days">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row align-items-center g-5">
+
+        <!-- image -->
+        <div class="col-12 col-lg-5 reveal">
+          <div class="bio-img-wrap">
+            <img src="assets/konmon5.png" alt="Konmon Deh — The Early Days"/>
+            <div class="bio-img-caption">Konmon Deh — Former Professional Fighter</div>
+          </div>
+        </div>
+
+        <!-- text -->
+        <div class="col-12 col-lg-7 reveal reveal-1">
+          <div class="section-tag">Origin Story</div>
+          <h2 class="section-title mb-3">The Early <span style="color:var(--red)">Days</span></h2>
+          <div class="red-divider mb-4"></div>
+
+          <p class="muted-text mb-3">
+            With over 20 years of experience in combat sports, Konmon Deh has developed a rare expertise: the ability to transform potential into concrete results. A former professional fighter, he began his career in 2011 in England and built a solid track record marked by major titles.
+          </p>
+          <p class="muted-text mb-3">
+            His competitive career forged a deep understanding of the demands of elite-level performance. As an Amateur European Champion and Double Professional European Champion (2016–2017), Konmon knows firsthand what it takes to reach the top — and now dedicates himself to guiding others on that same path.
+          </p>
+          <p class="muted-text mb-4">
+            Today, as Head Coach MMA and Performance Architect, he accompanies elite athletes to the highest levels of the sport, combining rigor, precision, and a holistic vision of performance.
+          </p>
+
+          <!-- quick info grid -->
+          <div class="row g-3 mb-4">
+            <div class="col-6 col-sm-3">
+              <div class="p-3" style="background:var(--dark3);border:1px solid rgba(255,255,255,.06)">
+                <div style="font-family:var(--font-d);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Pro Debut</div>
+                <div style="font-family:var(--font-c);font-size:1.1rem;font-weight:800;color:#fff">2011</div>
+              </div>
+            </div>
+            <div class="col-6 col-sm-3">
+              <div class="p-3" style="background:var(--dark3);border:1px solid rgba(255,255,255,.06)">
+                <div style="font-family:var(--font-d);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Started In</div>
+                <div style="font-family:var(--font-c);font-size:1.1rem;font-weight:800;color:#fff">England</div>
+              </div>
+            </div>
+            <div class="col-6 col-sm-3">
+              <div class="p-3" style="background:var(--dark3);border:1px solid rgba(255,255,255,.06)">
+                <div style="font-family:var(--font-d);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Role</div>
+                <div style="font-family:var(--font-c);font-size:1.1rem;font-weight:800;color:#fff">Head Coach</div>
+              </div>
+            </div>
+            <div class="col-6 col-sm-3">
+              <div class="p-3" style="background:var(--dark3);border:1px solid rgba(255,255,255,.06)">
+                <div style="font-family:var(--font-d);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Diplomas</div>
+                <div style="font-family:var(--font-c);font-size:1.1rem;font-weight:800;color:#fff">2 State</div>
+              </div>
+            </div>
+          </div>
+
+          <a href="contact.html" class="btn-primary-red">Book a Session</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROFESSIONAL CAREER ══ -->
+  <section class="py-5 py-lg-6" style="background:var(--dark)" id="career">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row align-items-center g-5">
+
+        <!-- text -->
+        <div class="col-12 col-lg-7 reveal">
+          <div class="section-tag">Career</div>
+          <h2 class="section-title mb-3">Professional <span style="color:var(--red)">Career</span></h2>
+          <div class="red-divider mb-4"></div>
+
+          <div class="pull-quote mb-4">
+            "Behind every champion, there is a strategist. I build victory long before it appears under the spotlight."
+          </div>
+
+          <p class="muted-text mb-3">
+            Konmon Deh's fighting career, which began in 2011 in England, was marked by major achievements: Amateur European Champion and Double Professional European Champion (2016–2017). This competitive foundation gave him a profound understanding of what it takes to perform at the highest level.
+          </p>
+          <p class="muted-text mb-3">
+            Today, as Head Coach, he is the strategic pillar behind fighters who dominate their divisions. His athletes include Xavier Lessou (ARES FC Heavyweight World Champion 2026), Jordan Zébo (ARES FC Welterweight World Champion 2025–2026), and Jires Tsague (Hard Fighting Championship European Champion 2025).
+          </p>
+          <p class="muted-text mb-4">
+            His role goes far beyond training — he coordinates a complete team of specialists across wrestling, grappling, boxing &amp; kickboxing, physical preparation, nutrition, and medical support. Through regular interdisciplinary meetings, he ensures total coherence in every fighter's preparation. The result: optimized, controlled, and reproducible performance.
+          </p>
+
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#champions" class="btn-primary-red">View Champions</a>
+            <a href="coaching.html" class="btn-outline-light-custom">Join Training</a>
+          </div>
+        </div>
+
+        <!-- image -->
+        <div class="col-12 col-lg-5 reveal reveal-1">
+          <div class="bio-img-wrap">
+            <img src="assets/konmon6.png" alt="Professional Career"/>
+            <div class="bio-img-caption">Head Coach MMA · Double European Champion</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CHAMPIONS COACHED ══ -->
+  <section class="record-section py-5 py-lg-6" id="champions">
+    <div class="container-fluid px-4 px-lg-5">
+
+      <div class="text-center mb-5 reveal">
+        <div class="section-tag center">Results</div>
+        <h2 class="section-title">Champions <span style="color:var(--red)">Coached</span></h2>
+      </div>
+
+      <div class="row g-4 justify-content-center mb-5">
+        <!-- Champion 1 -->
+        <div class="col-12 col-md-4 reveal">
+          <div class="p-4 text-center" style="background:var(--dark3);border:1px solid rgba(255,255,255,.06)">
+            <div style="font-family:var(--font-c);font-size:2.4rem;font-weight:800;color:var(--red);line-height:1;margin-bottom:8px">Xavier Lessou</div>
+            <div style="font-family:var(--font-d);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5)">Heavyweight World Champion</div>
+            <div style="font-family:var(--font-d);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px">ARES Fighting Championship 2026</div>
+          </div>
+        </div>
+        <!-- Champion 2 -->
+        <div class="col-12 col-md-4 reveal reveal-1">
+          <div class="p-4 text-center" style="background:var(--dark3);border:1px solid rgba(255,255,255,.06)">
+            <div style="font-family:var(--font-c);font-size:2.4rem;font-weight:800;color:var(--red);line-height:1;margin-bottom:8px">Jordan Z&eacute;bo</div>
+            <div style="font-family:var(--font-d);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5)">Welterweight World Champion</div>
+            <div style="font-family:var(--font-d);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px">ARES FC 2025 – 2026</div>
+          </div>
+        </div>
+        <!-- Champion 3 -->
+        <div class="col-12 col-md-4 reveal reveal-2">
+          <div class="p-4 text-center" style="background:var(--dark3);border:1px solid rgba(255,255,255,.06)">
+            <div style="font-family:var(--font-c);font-size:2.4rem;font-weight:800;color:var(--red);line-height:1;margin-bottom:8px">Jires Tsague</div>
+            <div style="font-family:var(--font-d);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5)">European Champion</div>
+            <div style="font-family:var(--font-d);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px">Hard Fighting Championship 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal Titles -->
+      <div class="text-center mb-5 reveal">
+        <div class="section-tag center">Personal Titles</div>
+        <h2 class="section-title">Fighting <span style="color:var(--red)">Career</span></h2>
+      </div>
+
+      <div class="d-flex flex-wrap justify-content-center gap-3 mb-4 reveal reveal-1">
+        <div class="px-4 py-3 text-center" style="background:rgba(95,224,138,.08);border:1px solid rgba(95,224,138,.25)">
+          <div style="font-family:var(--font-c);font-size:1.4rem;font-weight:800;color:#5fe08a;line-height:1.2">Amateur European<br>Champion</div>
+        </div>
+        <div class="px-4 py-3 text-center" style="background:rgba(232,33,46,.08);border:1px solid rgba(232,33,46,.25)">
+          <div style="font-family:var(--font-c);font-size:1.4rem;font-weight:800;color:var(--red);line-height:1.2">Pro European<br>Champion 2016</div>
+        </div>
+        <div class="px-4 py-3 text-center" style="background:rgba(232,33,46,.08);border:1px solid rgba(232,33,46,.25)">
+          <div style="font-family:var(--font-c);font-size:1.4rem;font-weight:800;color:var(--red);line-height:1.2">Pro European<br>Champion 2017</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CERTIFIED EXPERTISE ══ -->
+  <section class="recent-section py-5 py-lg-6" id="expertise">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row align-items-center g-5">
+
+        <!-- image -->
+        <div class="col-12 col-lg-5 reveal">
+          <div class="recent-img-wrap">
+            <img src="assets/konmon7.png" alt="Konmon Deh Coaching"/>
+            <div class="recent-badge">Certified Coach</div>
+          </div>
+        </div>
+
+        <!-- text -->
+        <div class="col-12 col-lg-7 reveal reveal-1">
+          <div class="section-tag">Expertise</div>
+          <h2 class="section-title mb-3">Certified <span style="color:var(--red)">Excellence</span></h2>
+          <div class="red-divider mb-4"></div>
+
+          <p class="muted-text mb-3">
+            Because excellence rests on solid foundations, Konmon Deh holds two state-level certifications: the Brevet d'&Eacute;tat in Contact Sports and the Dipl&ocirc;me d'&Eacute;tat in Boxing — a dual qualification that guarantees structured, safe, and high-performance coaching.
+          </p>
+          <p class="muted-text mb-4">
+            He coordinates a complete team of specialists — wrestling, grappling, boxing &amp; kickboxing, physical preparation, nutrition, and medical support. Through regular interdisciplinary meetings, he ensures total coherence in preparation. Whether working with beginners, amateurs, professional fighters, children, adults, or seniors, the goal remains the same: to help every practitioner progress.
+          </p>
+
+          <!-- expertise highlights -->
+          <div class="mb-4">
+            <div class="fight-item">
+              <div class="fight-dot"></div>
+              <div class="flex-fill">
+                <div class="fight-name">Wrestling &amp; Grappling</div>
+              </div>
+            </div>
+            <div class="fight-item">
+              <div class="fight-dot"></div>
+              <div class="flex-fill">
+                <div class="fight-name">Boxing &amp; Kickboxing</div>
+              </div>
+            </div>
+            <div class="fight-item">
+              <div class="fight-dot"></div>
+              <div class="flex-fill">
+                <div class="fight-name">Physical Preparation</div>
+              </div>
+            </div>
+            <div class="fight-item">
+              <div class="fight-dot"></div>
+              <div class="flex-fill">
+                <div class="fight-name">Nutrition &amp; Medical Support</div>
+              </div>
+            </div>
+          </div>
+
+          <a href="contact.html" class="btn-primary-red">Work with Konmon</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MOVIE SECTION ══ -->
+  <section class="movie-section py-5 py-lg-6" id="movie">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row align-items-center g-5">
+
+        <!-- text -->
+        <div class="col-12 col-lg-5 movie-text-panel reveal">
+          <div class="section-tag">Documentary</div>
+          <h2 class="section-title mb-3">The <span style="color:var(--red)">Journey</span></h2>
+          <div class="red-divider mb-4"></div>
+          <p class="muted-text mb-3">
+            Follow the journey of Konmon Deh from England's fight scenes to becoming one of the most respected MMA Head Coaches in Europe. A story of discipline, resilience, and the transformation from fighter to elite performance architect.
+          </p>
+          <p class="muted-text mb-4">
+            From Amateur European Champion to Double Professional European Champion, and now the strategic mind behind three reigning world and European champions — this is the story of a coach who builds victory long before it hits the spotlight.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#" class="btn-primary-red"><i class="bi bi-play-fill me-2"></i>Watch Trailer</a>
+            <a href="#" class="btn-outline-light-custom">Learn More</a>
+          </div>
+        </div>
+
+        <!-- video thumbnail -->
+        <div class="col-12 col-lg-7 reveal reveal-1">
+          <div class="movie-video-wrap">
+            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1000&q=80&fit=crop" alt="La Mygale - The Journey"/>
+            <div class="movie-overlay"></div>
+            <div class="play-btn"><i class="bi bi-play-fill"></i></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PHOTO GALLERY ══ -->
+  <section class="gallery-section py-5 py-lg-6" id="gallery">
+    <div class="container-fluid px-4 px-lg-5">
+
+      <div class="text-center mb-5 reveal">
+        <div class="section-tag center">Photos</div>
+        <h2 class="section-title">Photo <span style="color:var(--red)">Gallery</span></h2>
+      </div>
+
+      <div class="row g-3" id="galleryGrid">
+
+        <!-- Row 1 -->
+        <div class="col-12 col-sm-6 col-lg-4 reveal">
+          <div class="gallery-item gallery-item-tall" data-src="https://images.unsplash.com/photo-1605092676985-e2b0c8591e77?w=900&q=80&fit=crop">
+            <img src="https://images.unsplash.com/photo-1605092676985-e2b0c8591e77?w=600&q=80&fit=crop" alt="Gallery 1"/>
+            <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 reveal reveal-1">
+          <div class="gallery-item gallery-item-tall" data-src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80&fit=crop">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&fit=crop" alt="Gallery 2"/>
+            <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 reveal reveal-2">
+          <div class="d-flex flex-column gap-3">
+            <div class="gallery-item gallery-item-short" data-src="https://images.unsplash.com/photo-1549923746-c502d488b3ea?w=900&q=80&fit=crop">
+              <img src="https://images.unsplash.com/photo-1549923746-c502d488b3ea?w=600&q=80&fit=crop" alt="Gallery 3"/>
+              <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+            </div>
+            <div class="gallery-item gallery-item-short" data-src="https://images.unsplash.com/photo-1517438984742-1262db08379e?w=900&q=80&fit=crop">
+              <img src="https://images.unsplash.com/photo-1517438984742-1262db08379e?w=600&q=80&fit=crop" alt="Gallery 4"/>
+              <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="col-12 col-sm-6 col-lg-3 reveal">
+          <div class="gallery-item gallery-item-short" data-src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=900&q=80&fit=crop">
+            <img src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=600&q=80&fit=crop" alt="Gallery 5"/>
+            <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3 reveal reveal-1">
+          <div class="gallery-item gallery-item-short" data-src="https://images.unsplash.com/photo-1567013127542-490d757e6349?w=900&q=80&fit=crop">
+            <img src="https://images.unsplash.com/photo-1567013127542-490d757e6349?w=600&q=80&fit=crop" alt="Gallery 6"/>
+            <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-6 reveal reveal-2">
+          <div class="gallery-item gallery-item-short" data-src="https://images.unsplash.com/photo-1540324155974-7523202daa3f?w=900&q=80&fit=crop">
+            <img src="https://images.unsplash.com/photo-1540324155974-7523202daa3f?w=900&q=80&fit=crop" alt="Gallery 7"/>
+            <div class="gallery-overlay"><i class="bi bi-zoom-in"></i></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox-backdrop" id="lightbox">
+    <button class="lightbox-close" id="lbClose"><i class="bi bi-x-lg"></i></button>
+    <button class="lightbox-nav lightbox-prev" id="lbPrev"><i class="bi bi-chevron-left"></i></button>
+    <img class="lightbox-img" id="lbImg" src="" alt=""/>
+    <button class="lightbox-nav lightbox-next" id="lbNext"><i class="bi bi-chevron-right"></i></button>
+    <div class="lightbox-counter" id="lbCounter"></div>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="site-footer py-5">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row g-5 mb-5">
+        <div class="col-12 col-lg-4">
+          <div class="footer-logo mb-3"><span>KONMON</span>DEH</div>
+          <p class="footer-desc mb-3">The official website of Konmon Deh — Head Coach MMA, Double European Champion, and performance architect guiding elite fighters to world titles.</p>
+          <div class="d-flex gap-2">
+            <a class="social-btn" href="https://www.instagram.com/konmon_deh" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a class="social-btn" href="https://www.facebook.com/konmon.deh/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <!-- <a class="social-btn" href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a class="social-btn" href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a> -->
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="footer-heading">Navigation</div>
+          <ul class="footer-link-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Biography</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">News</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="footer-heading">Pages</div>
+          <ul class="footer-link-list">
+            <li><a href="coaching.html">Coaching</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="footer-heading">Shop</div>
+          <ul class="footer-link-list">
+            <li><a href="#">Challenger Gloves</a></li>
+            <li><a href="#">Handwraps</a></li>
+            <li><a href="#">Headguard</a></li>
+            <li><a href="#">Sparring Gloves</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-top border-secondary pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+        <p class="footer-copy mb-0">© 2026 <span>Coach Konmon</span>. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    /* ── Reveal on scroll ── */
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    /* ── Sticky header ── */
+    const nav = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      nav.style.background = scrollY > 60 ? 'rgba(8,8,8,.98)' : '';
+    });
+
+    /* ── Count-up ── */
+    function countUp(el) {
+      const target = parseInt(el.dataset.target), dur = 1600;
+      let v = 0; const step = target / (dur / 16);
+      const t = setInterval(() => {
+        v += step;
+        if (v >= target) { el.textContent = target; clearInterval(t); }
+        else { el.textContent = Math.floor(v); }
+      }, 16);
+    }
+    const cObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); cObs.unobserve(e.target); } });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.count-up').forEach(el => cObs.observe(el));
+
+    /* ── Lightbox ── */
+    const galleryImgs = [...document.querySelectorAll('.gallery-item')].map(el => el.dataset.src);
+    let currentLb = 0;
+    function openLb(idx) {
+      currentLb = idx;
+      document.getElementById('lbImg').src = galleryImgs[idx];
+      document.getElementById('lbCounter').textContent = (idx + 1) + ' / ' + galleryImgs.length;
+      document.getElementById('lightbox').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLb() {
+      document.getElementById('lightbox').classList.remove('show');
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('.gallery-item').forEach((el, i) => el.addEventListener('click', () => openLb(i)));
+    document.getElementById('lbClose').addEventListener('click', closeLb);
+    document.getElementById('lightbox').addEventListener('click', e => { if (e.target === document.getElementById('lightbox')) closeLb(); });
+    document.getElementById('lbPrev').addEventListener('click', () => openLb((currentLb - 1 + galleryImgs.length) % galleryImgs.length));
+    document.getElementById('lbNext').addEventListener('click', () => openLb((currentLb + 1) % galleryImgs.length));
+    document.addEventListener('keydown', e => {
+      if (!document.getElementById('lightbox').classList.contains('show')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowLeft') openLb((currentLb - 1 + galleryImgs.length) % galleryImgs.length);
+      if (e.key === 'ArrowRight') openLb((currentLb + 1) % galleryImgs.length);
+    });
+  </script>
+
+
+<div class="gtranslate_wrapper"></div>
+    <script>window.gtranslateSettings = {"default_language":"en","detect_browser_language":true, "wrapper_selector":".gtranslate_wrapper","alt_flags":{"en": "usa"}}</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+
+
+</body>
+</html>

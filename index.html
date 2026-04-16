@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Konmon Deh - Head Coach MMA | Performance Architect</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --red: #e8212e;
+      --red-dark: #c41a26;
+      --dark: #0d0d0d;
+      --dark2: #141414;
+      --dark3: #1c1c1c;
+      --muted: #888;
+      --font-d: 'Oswald', sans-serif;
+      --font-b: 'Barlow', sans-serif;
+      --font-c: 'Barlow Condensed', sans-serif;
+    }
+    body { background: var(--dark); color: #f0f0f0; font-family: var(--font-b); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+    /* ── NAVBAR ── */
+    .navbar { background: rgba(10,10,10,.95) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .navbar-brand { font-family: var(--font-d); font-size: 1.9rem; font-weight: 700; letter-spacing: 3px; color: #fff !important; }
+    .navbar-brand span { color: var(--red); }
+    .navbar-nav .nav-link {
+      font-family: var(--font-d); font-size: .82rem; letter-spacing: 2px;
+      text-transform: uppercase; color: #ccc !important; padding: 8px 14px !important;
+      position: relative; transition: color .25s;
+    }
+    .navbar-nav .nav-link::after {
+      content: ''; position: absolute; bottom: 0; left: 14px; right: 100%;
+      height: 2px; background: var(--red); transition: right .3s;
+    }
+    .navbar-nav .nav-link:hover { color: #fff !important; }
+    .navbar-nav .nav-link:hover::after { right: 14px; }
+    .btn-nav-cta { background: var(--red) !important; color: #fff !important; border-radius: 0 !important; font-family: var(--font-d); font-size: .8rem; letter-spacing: 2px; text-transform: uppercase; }
+    .btn-nav-cta:hover { background: var(--red-dark) !important; }
+    .navbar-toggler { border-color: rgba(255,255,255,.2); }
+    .navbar-toggler-icon { filter: invert(1); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(105deg, rgba(232,33,46,.18) 0%, transparent 55%),
+        linear-gradient(to right, rgba(13,13,13,.92) 35%, rgba(13,13,13,.15) 100%),
+        url('assets/konmon4.png') center/cover no-repeat;
+      display: flex; align-items: center;
+    }
+    .hero-label {
+      font-family: var(--font-d); font-size: .78rem; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--red);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-label::before { content: ''; display: inline-block; width: 36px; height: 2px; background: var(--red); }
+    .hero h1 {
+      font-family: var(--font-c); font-size: clamp(3.5rem, 7vw, 6.5rem);
+      font-weight: 800; line-height: .95; text-transform: uppercase; color: #fff;
+    }
+    .hero h1 em { color: var(--red); font-style: normal; }
+    .hero-sub {
+      font-family: var(--font-c); font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 700; text-transform: uppercase; color: rgba(255,255,255,.45); letter-spacing: 4px;
+    }
+    .hero p { color: rgba(255,255,255,.6); font-size: 1.05rem; line-height: 1.75; max-width: 480px; }
+    .btn-hero-primary {
+      background: var(--red); color: #fff; border: none;
+      font-family: var(--font-d); font-size: .85rem; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 600; padding: 14px 36px;
+      clip-path: polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);
+      transition: background .25s, transform .2s;
+    }
+    .btn-hero-primary:hover { background: var(--red-dark); color: #fff; transform: translateY(-2px); }
+    .btn-hero-outline {
+      background: transparent; color: #fff;
+      border: 2px solid rgba(255,255,255,.3);
+      font-family: var(--font-d); font-size: .85rem; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 600; padding: 12px 34px;
+      transition: border-color .25s, background .25s;
+    }
+    .btn-hero-outline:hover { border-color: var(--red); background: rgba(232,33,46,.1); color: #fff; }
+    .stat-num { font-family: var(--font-c); font-size: 2.6rem; font-weight: 800; color: var(--red); line-height: 1; }
+    .stat-lbl { font-family: var(--font-d); font-size: .68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+
+    /* ── SECTION SHARED ── */
+    .section-tag {
+      font-family: var(--font-d); font-size: .74rem; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--red);
+      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+    }
+    .section-tag::before { content: ''; display: inline-block; width: 28px; height: 2px; background: var(--red); }
+    .section-title { font-family: var(--font-c); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.05; }
+
+    /* ── ABOUT ── */
+    .about-section { background: var(--dark2); }
+    .about-img-wrap { position: relative; overflow: hidden; }
+    .about-img-wrap img { width: 100%; height: 520px; object-fit: cover; filter: brightness(.85); transition: transform .6s; }
+    .about-img-wrap:hover img { transform: scale(1.04); }
+    .about-badge {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: var(--red); padding: 16px 24px;
+      font-family: var(--font-d); font-size: .78rem; letter-spacing: 3px;
+      text-transform: uppercase; color: #fff;
+    }
+    .cat-tag {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      padding: 7px 16px; font-family: var(--font-d); font-size: .72rem;
+      letter-spacing: 2px; text-transform: uppercase; color: #ccc; display: inline-block;
+    }
+    .about-text p { color: rgba(255,255,255,.6); line-height: 1.8; }
+
+    /* ── EVENTS ── */
+    .events-section { background: var(--dark); }
+    .event-card {
+      background: var(--dark3); padding: 22px 28px;
+      border-left: 3px solid transparent;
+      transition: border-color .25s, background .25s, transform .2s;
+      cursor: pointer;
+    }
+    .event-card:hover { border-color: var(--red); background: rgba(232,33,46,.05); transform: translateX(4px); }
+    .event-day { font-family: var(--font-c); font-size: 2.2rem; font-weight: 800; color: var(--red); line-height: 1; }
+    .event-mon { font-family: var(--font-d); font-size: .68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    .event-title { font-family: var(--font-d); font-size: 1.05rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #fff; }
+    .event-time { font-size: .85rem; color: var(--muted); }
+
+    /* ── STORE ── */
+    .store-section { background: var(--dark2); }
+    .product-card { background: var(--dark3); overflow: hidden; border: 1px solid rgba(255,255,255,.05); transition: border-color .3s, transform .3s; }
+    .product-card:hover { border-color: rgba(232,33,46,.35); transform: translateY(-5px); }
+    .product-img-wrap { overflow: hidden; height: 210px; }
+    .product-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .product-card:hover .product-img-wrap img { transform: scale(1.06); }
+    .product-tags { font-size: .72rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+    .product-name { font-family: var(--font-d); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: #fff; }
+    .product-price { font-family: var(--font-c); font-size: 1.4rem; font-weight: 700; color: var(--red); }
+    .btn-add-cart {
+      display: block; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      color: #ccc; text-align: center; padding: 9px; font-family: var(--font-d); font-size: .72rem;
+      letter-spacing: 2px; text-transform: uppercase; transition: background .25s, color .25s, border-color .25s;
+    }
+    .btn-add-cart:hover { background: var(--red); border-color: var(--red); color: #fff; }
+
+    /* ── VIDEO ── */
+    .video-section { background: var(--dark); }
+    .video-card { position: relative; overflow: hidden; cursor: pointer; background: var(--dark3); }
+    .video-card img { width: 100%; object-fit: cover; filter: brightness(.55); transition: filter .4s, transform .5s; }
+    .video-card:hover img { filter: brightness(.35); transform: scale(1.04); }
+    .video-featured img { height: 440px; }
+    .video-side img { height: 200px; }
+    .video-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; }
+    .play-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 58px; height: 58px; border-radius: 50%; background: var(--red);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .3s, background .3s;
+    }
+    .play-btn i { color: #fff; font-size: 1.2rem; margin-left: 3px; }
+    .video-card:hover .play-btn { transform: translate(-50%,-50%) scale(1.14); }
+    .video-label { font-family: var(--font-d); font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--red); }
+    .video-title { font-family: var(--font-d); font-size: 1.05rem; text-transform: uppercase; color: #fff; font-weight: 600; }
+    .video-featured .video-title { font-size: 1.45rem; }
+
+    /* ── NEWS ── */
+    .news-section { background: var(--dark2); }
+    .news-card { background: var(--dark3); overflow: hidden; border: 1px solid rgba(255,255,255,.05); transition: border-color .3s, transform .3s; height: 100%; }
+    .news-card:hover { border-color: rgba(232,33,46,.3); transform: translateY(-4px); }
+    .news-img-wrap { overflow: hidden; height: 210px; }
+    .news-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .news-card:hover .news-img-wrap img { transform: scale(1.05); }
+    .news-cat { background: var(--red); color: #fff; padding: 3px 10px; font-family: var(--font-d); font-size: .68rem; letter-spacing: 1px; text-transform: uppercase; display: inline-block; }
+    .news-title { font-family: var(--font-d); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: #fff; line-height: 1.4; transition: color .25s; }
+    .news-card:hover .news-title { color: var(--red); }
+    .news-excerpt { font-size: .88rem; line-height: 1.7; color: rgba(255,255,255,.48); }
+
+    /* ── RED CTA ── */
+    .red-cta { background: var(--red); position: relative; overflow: hidden; }
+    .red-cta::before {
+      content: 'MMA'; position: absolute; left: -20px; top: -20px;
+      font-family: var(--font-c); font-size: 18rem; font-weight: 800;
+      color: rgba(255,255,255,.05); line-height: 1; pointer-events: none;
+    }
+    .red-cta h2 { font-family: var(--font-c); font-size: clamp(2rem,4vw,3.2rem); font-weight: 800; text-transform: uppercase; color: #fff; }
+    .red-cta p { color: rgba(255,255,255,.82); font-size: 1rem; line-height: 1.7; }
+    .btn-cta-white { background: #fff; color: var(--red); font-family: var(--font-d); font-size: .85rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; padding: 14px 40px; border: none; transition: background .25s, transform .2s; }
+    .btn-cta-white:hover { background: #f0f0f0; color: var(--red); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    .site-footer { background: #080808; border-top: 1px solid rgba(255,255,255,.06); }
+    .footer-logo { font-family: var(--font-d); font-size: 1.8rem; font-weight: 700; letter-spacing: 3px; color: #fff; }
+    .footer-logo span { color: var(--red); }
+    .footer-desc { font-size: .88rem; line-height: 1.8; color: rgba(255,255,255,.38); }
+    .footer-heading { font-family: var(--font-d); font-size: .76rem; letter-spacing: 3px; text-transform: uppercase; color: #fff; border-bottom: 1px solid rgba(255,255,255,.07); padding-bottom: 10px; margin-bottom: 16px; }
+    .footer-link-list { list-style: none; padding: 0; }
+    .footer-link-list li + li { margin-top: 8px; }
+    .footer-link-list a { font-size: .88rem; color: rgba(255,255,255,.4); display: flex; align-items: center; gap: 8px; transition: color .25s, padding-left .25s; }
+    .footer-link-list a::before { content: '—'; font-size: .65rem; color: var(--red); }
+    .footer-link-list a:hover { color: #fff; padding-left: 4px; }
+    .social-btn { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: var(--muted); font-family: var(--font-d); font-size: .75rem; transition: border-color .25s, background .25s, color .25s; }
+    .social-btn:hover { border-color: var(--red); background: var(--red); color: #fff; }
+    .footer-copy { font-size: .82rem; color: rgba(255,255,255,.26); }
+    .footer-copy span { color: var(--red); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-1 { transition-delay: .1s; }
+    .reveal-2 { transition-delay: .2s; }
+    .reveal-3 { transition-delay: .3s; }
+
+  /* ── What We Offer Section ── */
+  #what-we-offer {
+    background: var(--dark2, #141414);
+  }
+
+  /* intro blurb split */
+  .offer-intro-text {
+    color: rgba(255,255,255,.55);
+    line-height: 1.85;
+    font-size: .97rem;
+  }
+
+  /* service cards */
+  .service-card {
+    background: var(--dark3, #1c1c1c);
+    border: 1px solid rgba(255,255,255,.06);
+    overflow: hidden;
+    position: relative;
+    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    cursor: pointer;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(232,33,46,.4);
+    box-shadow: 0 16px 48px rgba(232,33,46,.14);
+  }
+
+  /* image wrapper with overlay */
+  .service-img-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+  }
+  .service-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(.55);
+    transition: transform .5s ease, filter .5s ease;
+  }
+  .service-card:hover .service-img-wrap img {
+    transform: scale(1.07);
+    filter: brightness(.38);
+  }
+  .service-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, rgba(28,28,28,.95) 100%);
+  }
+
+  /* number badge */
+  .service-number {
+    position: absolute;
+    top: 14px;
+    left: 18px;
+    font-family: var(--font-c, 'Barlow Condensed', sans-serif);
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: rgba(232,33,46,.25);
+    line-height: 1;
+    transition: color .3s;
+  }
+  .service-card:hover .service-number {
+    color: rgba(232,33,46,.5);
+  }
+
+  /* icon circle */
+  .service-icon {
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--red, #e8212e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .3s;
+  }
+  .service-card:hover .service-icon {
+    transform: scale(1.12);
+  }
+  .service-icon i {
+    color: #fff;
+    font-size: 1rem;
+  }
+
+  /* card body */
+  .service-body {
+    padding: 20px 20px 22px;
+  }
+  .service-name {
+    font-family: var(--font-d, 'Oswald', sans-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    transition: color .25s;
+  }
+  .service-card:hover .service-name {
+    color: var(--red, #e8212e);
+  }
+  .service-desc {
+    font-size: .86rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,.45);
+    margin-bottom: 14px;
+  }
+  .service-link {
+    font-family: var(--font-d, 'Oswald', sans-serif);
+    font-size: .72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red, #e8212e);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid rgba(232,33,46,.3);
+    padding-bottom: 2px;
+    transition: gap .25s, border-color .25s;
+  }
+  .service-link:hover {
+    gap: 10px;
+    border-color: var(--red, #e8212e);
+    color: var(--red, #e8212e);
+  }
+
+  /* FREE LESSON BANNER */
+  .free-lesson-banner {
+    background:
+      linear-gradient(to right, rgba(13,13,13,.95) 40%, rgba(13,13,13,.5) 100%),
+      url('https://images.unsplash.com/photo-1517438984742-1262db08379e?w=1400&q=80&fit=crop') center/cover no-repeat;
+    position: relative;
+    overflow: hidden;
+    border-top: 3px solid var(--red, #e8212e);
+  }
+  .free-lesson-banner::after {
+    content: 'FREE';
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    font-family: var(--font-c, 'Barlow Condensed', sans-serif);
+    font-size: 16rem;
+    font-weight: 800;
+    color: rgba(255,255,255,.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .free-lesson-banner h2 {
+    font-family: var(--font-c, 'Barlow Condensed', sans-serif);
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1.05;
+  }
+  .free-lesson-banner h2 span {
+    color: var(--red, #e8212e);
+  }
+
+  /* form inputs */
+  .lesson-input {
+    background: rgba(255,255,255,.06) !important;
+    border: 1px solid rgba(255,255,255,.12) !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    font-family: var(--font-b, 'Barlow', sans-serif);
+    font-size: .95rem;
+    padding: 13px 16px;
+    transition: border-color .25s, background .25s;
+  }
+  .lesson-input::placeholder { color: rgba(255,255,255,.3) !important; }
+  .lesson-input option { background: #1c1c1c; color: #ccc; }
+  .lesson-input:focus {
+    border-color: var(--red, #e8212e) !important;
+    background: rgba(232,33,46,.06) !important;
+    box-shadow: none !important;
+    outline: none;
+  }
+  .btn-lesson {
+    background: var(--red, #e8212e);
+    color: #fff;
+    border: none;
+    font-family: var(--font-d, 'Oswald', sans-serif);
+    font-size: .85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 13px 36px;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    transition: background .25s, transform .2s;
+    white-space: nowrap;
+  }
+  .btn-lesson:hover {
+    background: #c41a26;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  /* lesson form success */
+  .lesson-toast {
+    background: rgba(40,160,80,.12);
+    border: 1px solid rgba(40,160,80,.35);
+    color: #5fe08a;
+    font-family: var(--font-d, 'Oswald', sans-serif);
+    font-size: .78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* filter tabs */
+  .filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 36px;
+  }
+  .filter-tab {
+    font-family: var(--font-d, 'Oswald', sans-serif);
+    font-size: .72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border: 1px solid rgba(255,255,255,.1);
+    color: rgba(255,255,255,.5);
+    background: transparent;
+    cursor: pointer;
+    transition: border-color .25s, background .25s, color .25s;
+  }
+  .filter-tab:hover,
+  .filter-tab.active {
+    border-color: var(--red, #e8212e);
+    background: var(--red, #e8212e);
+    color: #fff;
+  }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top py-2">
+    <div class="container-fluid px-4 px-lg-5">
+      <a class="navbar-brand" href="#"><span>KONMON</span>DEH</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="coaching.html">Coaching</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="nav-link btn btn-nav-cta px-3 py-2" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero pt-5" id="home">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row">
+        <div class="col-12 col-lg-7 col-xl-6 py-5">
+          <div class="hero-label mb-3">Head Coach MMA</div>
+          <h1 class="mb-2">Konmon<br><em>Deh</em></h1>
+          <div class="hero-sub mb-3">Performance Architect</div>
+          <p class="mb-4">Behind every champion, there is a strategist. With over 20 years in combat sports, I build victory long before it hits the spotlight — guiding elite athletes to the top of MMA through precision, discipline, and a complete vision of performance.</p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#about" class="btn btn-hero-primary">Discover My Approach</a>
+            <a href="#videos" class="btn btn-hero-outline">Watch Highlights</a>
+          </div>
+          <!-- stats -->
+          <div class="d-flex gap-4 mt-5 pt-3 border-top border-secondary">
+            <div class="stat-item text-center">
+              <div class="stat-num" id="s1">0</div>
+              <div class="stat-lbl">Years Experience</div>
+            </div>
+            <div class="stat-item text-center">
+              <div class="stat-num" id="s2">0</div>
+              <div class="stat-lbl">World Champions</div>
+            </div>
+            <div class="stat-item text-center">
+              <div class="stat-num" id="s3">0</div>
+              <div class="stat-lbl">European Titles</div>
+            </div>
+            <div class="stat-item text-center">
+              <div class="stat-num" id="s4">0</div>
+              <div class="stat-lbl">State Diplomas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section py-5 py-lg-6" id="about">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row align-items-center g-5">
+        <div class="col-12 col-lg-5 reveal">
+          <div class="about-img-wrap">
+            <img src="assets/konmon3.png" alt="Konmon Deh"/>
+            <div class="about-badge">Head Coach MMA · Double European Champion</div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-7 reveal reveal-1">
+          <div class="section-tag">Biography</div>
+          <h2 class="section-title mb-3">20+ Years · 3 World<br>Champions Coached</h2>
+          <p class="about-text mb-4">A former professional fighter who began his career in 2011 in England, Konmon Deh built a record marked by major titles — Amateur European Champion and Double Professional European Champion (2016–2017). Today, as Head Coach, he is the strategic pillar behind elite fighters who dominate their divisions: Xavier Lessou (ARES FC Heavyweight World Champion 2026), Jordan Zébo (ARES FC Welterweight World Champion 2025–2026), and Jires Tsague (Hard Fighting Championship European Champion 2025).</p>
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <span class="cat-tag">Brevet d'État Sports de Contact</span>
+            <span class="cat-tag">Diplôme d'État en Boxe</span>
+          </div>
+          <a href="coaching.html" class="btn btn-hero-primary">Coaching Programs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- STORE -->
+  <!-- <section class="store-section py-5 py-lg-6" id="store">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="section-tag">Shop</div>
+      <h2 class="section-title mb-5">Collaborations</h2>
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-xl-3 reveal">
+          <div class="product-card h-100">
+            <div class="product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1605092676985-e2b0c8591e77?w=500&q=80&fit=crop" alt="Challenger Gloves"/>
+            </div>
+            <div class="p-3">
+              <div class="product-tags mb-1">boxing · pro-x · sport</div>
+              <div class="product-name mb-2">Challenger Gloves</div>
+              <div class="product-price mb-3">$89.99</div>
+              <a class="btn-add-cart" href="#">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-xl-3 reveal reveal-1">
+          <div class="product-card h-100">
+            <div class="product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1562771379-eafdca7a02f8?w=500&q=80&fit=crop" alt="Elastic Handwraps"/>
+            </div>
+            <div class="p-3">
+              <div class="product-tags mb-1">boxing · pro-x · sport</div>
+              <div class="product-name mb-2">Elastic Handwraps</div>
+              <div class="product-price mb-3">$49.99</div>
+              <a class="btn-add-cart" href="#">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-xl-3 reveal reveal-2">
+          <div class="product-card h-100">
+            <div class="product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=500&q=80&fit=crop" alt="MMA Headguard"/>
+            </div>
+            <div class="p-3">
+              <div class="product-tags mb-1">boxing · pro-x · sport</div>
+              <div class="product-name mb-2">Delux MMA Headguard</div>
+              <div class="product-price mb-3">$99.99</div>
+              <a class="btn-add-cart" href="#">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-xl-3 reveal reveal-3">
+          <div class="product-card h-100">
+            <div class="product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1611311520135-2a2e1e39e7e2?w=500&q=80&fit=crop" alt="Sparring Gloves"/>
+            </div>
+            <div class="p-3">
+              <div class="product-tags mb-1">boxing · pro-x · sport</div>
+              <div class="product-name mb-2">MMA Sparring Gloves</div>
+              <div class="product-price mb-3">$79.99</div>
+              <a class="btn-add-cart" href="#">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <a href="#" class="btn btn-hero-primary">Shop Now</a>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- VIDEOS -->
+  <section class="video-section py-5 py-lg-6" id="videos">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="section-tag">Highlights</div>
+      <h2 class="section-title mb-5">Fights Video</h2>
+      <div class="row g-3">
+        <!-- featured -->
+        <div class="col-12 col-lg-8 reveal">
+          <div class="video-card video-featured">
+            <img src="https://images.unsplash.com/photo-1517438984742-1262db08379e?w=900&q=80&fit=crop" alt="Top MMA Fights" class="w-100"/>
+            <div class="video-overlay">
+              <div class="play-btn"><i class="bi bi-play-fill"></i></div>
+              <div class="video-label">Now Playing</div>
+              <div class="video-title">Top MMA Fights</div>
+            </div>
+          </div>
+        </div>
+        <!-- side -->
+        <div class="col-12 col-lg-4 reveal reveal-1">
+          <div class="d-flex flex-column gap-3 h-100">
+            <div class="video-card video-side flex-fill">
+              <img src="https://images.unsplash.com/photo-1605002512218-6dda8e8f90b1?w=600&q=80&fit=crop" alt="UFC Best Moments" class="w-100"/>
+              <div class="video-overlay">
+                <div class="play-btn"><i class="bi bi-play-fill"></i></div>
+                <div class="video-label">Now Playing</div>
+                <div class="video-title">UFC Best Moments</div>
+              </div>
+            </div>
+            <div class="video-card video-side flex-fill">
+              <img src="https://images.unsplash.com/photo-1567013127542-490d757e6349?w=600&q=80&fit=crop" alt="Motivation Clips" class="w-100"/>
+              <div class="video-overlay">
+                <div class="play-btn"><i class="bi bi-play-fill"></i></div>
+                <div class="video-label">Now Playing</div>
+                <div class="video-title">Motivation MMA Clips</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SECTION: WHAT WE OFFER
+     Paste this <section> block into your index page where needed.
+     ══════════════════════════════════════════════════════════════════ -->
+<section id="what-we-offer" class="py-5 py-lg-6">
+  <div class="container-fluid px-4 px-lg-5">
+
+    <!-- ── Section Header ── -->
+    <div class="row align-items-end g-4 mb-5">
+      <div class="col-12 col-lg-6 reveal">
+        <div class="section-tag">Services</div>
+        <h2 class="section-title mb-0">
+          What We <span style="color:var(--red,#e8212e)">Offer</span>
+        </h2>
+      </div>
+      <div class="col-12 col-lg-6 reveal reveal-1">
+        <p class="offer-intro-text mb-0">
+          From beginner boxing fundamentals to advanced MMA techniques, every class is built on real
+          fight experience. Whether you're training for competition or just looking to get in the best
+          shape of your life, Coach Konmon brings the discipline and expertise of 20+ years in combat
+          sports to every session.
+        </p>
+      </div>
+    </div>
+
+    <!-- ── Filter Tabs ── -->
+    <div class="filter-tabs reveal reveal-1" id="serviceFilters">
+      <button class="filter-tab active" data-filter="all">All Classes</button>
+      <button class="filter-tab" data-filter="boxing">Boxing</button>
+      <button class="filter-tab" data-filter="fitness">Fitness</button>
+      <button class="filter-tab" data-filter="training">Training</button>
+      <button class="filter-tab" data-filter="martial">Martial Arts</button>
+    </div>
+
+    <!-- ── Services Grid ── -->
+    <div class="row g-4" id="servicesGrid">
+
+      <!-- 1. Introduction to Boxing -->
+      <div class="col-12 col-sm-6 col-lg-4 reveal service-item" data-category="boxing">
+        <div class="service-card h-100">
+          <div class="service-img-wrap">
+            <img src="https://images.unsplash.com/photo-1549923746-c502d488b3ea?w=600&q=80&fit=crop" alt="Introduction to Boxing"/>
+            <div class="service-img-overlay"></div>
+            <span class="service-number">01</span>
+            <div class="service-icon"><i class="bi bi-dribbble"></i></div>
+          </div>
+          <div class="service-body">
+            <div class="service-name">Introduction to Boxing</div>
+            <p class="service-desc">Perfect for beginners. Learn stance, footwork, basic punches, and defensive moves in a supportive group environment.</p>
+            <a href="contact.html" class="service-link">Book Now <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Professional Body Pump -->
+      <div class="col-12 col-sm-6 col-lg-4 reveal reveal-1 service-item" data-category="fitness">
+        <div class="service-card h-100">
+          <div class="service-img-wrap">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&fit=crop" alt="Professional Body Pump"/>
+            <div class="service-img-overlay"></div>
+            <span class="service-number">02</span>
+            <div class="service-icon"><i class="bi bi-lightning-fill"></i></div>
+          </div>
+          <div class="service-body">
+            <div class="service-name">Professional Body Pump</div>
+            <p class="service-desc">High-intensity barbell workout targeting all major muscle groups. Build strength, tone your body, and burn calories fast.</p>
+            <a href="contact.html" class="service-link">Book Now <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Women's Boxing -->
+      <div class="col-12 col-sm-6 col-lg-4 reveal reveal-2 service-item" data-category="boxing">
+        <div class="service-card h-100">
+          <div class="service-img-wrap">
+            <img src="https://images.unsplash.com/photo-1540324155974-7523202daa3f?w=600&q=80&fit=crop" alt="Women's Boxing"/>
+            <div class="service-img-overlay"></div>
+            <span class="service-number">03</span>
+            <div class="service-icon"><i class="bi bi-star-fill"></i></div>
+          </div>
+          <div class="service-body">
+            <div class="service-name">Women's Boxing</div>
+            <p class="service-desc">A dedicated class empowering women through boxing. Build confidence, fitness, and self-defence skills in a safe space.</p>
+            <a href="contact.html" class="service-link">Book Now <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Coed Boxing -->
+      <div class="col-12 col-sm-6 col-lg-4 reveal service-item" data-category="boxing">
+        <div class="service-card h-100">
+          <div class="service-img-wrap">
+            <img src="https://images.unsplash.com/photo-1605092676985-e2b0c8591e77?w=600&q=80&fit=crop" alt="Coed Boxing"/>
+            <div class="service-img-overlay"></div>
+            <span class="service-number">04</span>
+            <div class="service-icon"><i class="bi bi-people-fill"></i></div>
+          </div>
+          <div class="service-body">
+            <div class="service-name">Coed Boxing</div>
+            <p class="service-desc">Mixed-gender group boxing sessions designed for all skill levels. Challenge yourself and train alongside motivated athletes.</p>
+            <a href="contact.html" class="service-link">Book Now <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Boxing for Teens -->
+      <div class="col-12 col-sm-6 col-lg-4 reveal reveal-1 service-item" data-category="boxing">
+        <div class="service-card h-100">
+          <div class="service-img-wrap">
+            <img src="https://images.unsplash.com/photo-1562771379-eafdca7a02f8?w=600&q=80&fit=crop" alt="Boxing for Teens"/>
+            <div class="service-img-overlay"></div>
+            <span class="service-number">05</span>
+            <div class="service-icon"><i class="bi bi-person-fill"></i></div>
+          </div>
+          <div class="service-body">
+            <div class="service-name">Boxing for Teens</div>
+            <p class="service-desc">A structured program for ages 13–17 building discipline, focus, and fitness through boxing in a safe, supervised environment.</p>
+            <a href="contact.html" class="service-link">Book Now <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Personal Training -->
+      <div class="col-12 col-sm-6 col-lg-4 reveal reveal-2 service-item" data-category="training">
+        <div class="service-card h-100">
+          <div class="service-img-wrap">
+            <img src="https://images.unsplash.com/photo-1567013127542-490d757e6349?w=600&q=80&fit=crop" alt="Personal Training"/>
+            <div class="service-img-overlay"></div>
+            <span class="service-number">06</span>
+            <div class="service-icon"><i class="bi bi-trophy-fill"></i></div>
+          </div>
+          <div class="service-body">
+            <div class="service-name">Personal Training</div>
+            <p class="service-desc">One-on-one sessions tailored to your goals. Our expert coaches craft a personalised plan to maximise your performance.</p>
+            <a href="contact.html" class="service-link">Book Now <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Suspension Weight Training -->
+      <div class="col-12 col-sm-6 col-lg-4 reveal service-item" data-category="fitness">
+        <div class="service-card h-100">
+          <div class="service-img-wrap">
+            <img src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=600&q=80&fit=crop" alt="Suspension Weight Training"/>
+            <div class="service-img-overlay"></div>
+            <span class="service-number">07</span>
+            <div class="service-icon"><i class="bi bi-activity"></i></div>
+          </div>
+          <div class="service-body">
+            <div class="service-name">Suspension Weight Training</div>
+            <p class="service-desc">TRX and suspension-based workouts that use your bodyweight to build core stability, strength, and balance.</p>
+            <a href="contact.html" class="service-link">Book Now <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Kickboxing Exercises -->
+      <div class="col-12 col-sm-6 col-lg-4 reveal reveal-1 service-item" data-category="martial">
+        <div class="service-card h-100">
+          <div class="service-img-wrap">
+            <img src="https://images.unsplash.com/photo-1517438984742-1262db08379e?w=600&q=80&fit=crop" alt="Kickboxing Exercises"/>
+            <div class="service-img-overlay"></div>
+            <span class="service-number">08</span>
+            <div class="service-icon"><i class="bi bi-bullseye"></i></div>
+          </div>
+          <div class="service-body">
+            <div class="service-name">Kickboxing Exercises</div>
+            <p class="service-desc">Combine punches and kicks in fast-paced, high-energy sessions that improve cardio, coordination, and fighting technique.</p>
+            <a href="contact.html" class="service-link">Book Now <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Body Stretching Exercises -->
+      <div class="col-12 col-sm-6 col-lg-4 reveal reveal-2 service-item" data-category="fitness">
+        <div class="service-card h-100">
+          <div class="service-img-wrap">
+            <img src="https://images.unsplash.com/photo-1611311520135-2a2e1e39e7e2?w=600&q=80&fit=crop" alt="Body Stretching Exercises"/>
+            <div class="service-img-overlay"></div>
+            <span class="service-number">09</span>
+            <div class="service-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+          </div>
+          <div class="service-body">
+            <div class="service-name">Body Stretching Exercises</div>
+            <p class="service-desc">Essential flexibility and recovery sessions to prevent injury, improve range of motion, and keep your body performing at its peak.</p>
+            <a href="contact.html" class="service-link">Book Now <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /row -->
+  </div><!-- /container -->
+
+
+  <!-- ── FREE LESSON BANNER ── -->
+  <div class="free-lesson-banner mt-5 py-5">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row align-items-center g-5">
+
+        <div class="col-12 col-lg-5 reveal">
+          <div class="section-tag">Lesson</div>
+          <h2>Train with <span>KONMON</span><br>Today</h2>
+          <p class="mt-3 mb-0" style="color:rgba(255,255,255,.55);line-height:1.8">
+            Not sure where to start? Book your complimentary first session and experience what Konmon's coaching is all about — no commitment, no credit card needed.
+          </p>
+        </div>
+
+        <div class="col-12 col-lg-7 reveal reveal-1">
+          <form id="freeLessonForm" novalidate>
+            <div class="row g-3">
+              <div class="col-12 col-sm-6">
+                <input type="text" class="form-control lesson-input" placeholder="Your Full Name *" required/>
+              </div>
+              <div class="col-12 col-sm-6">
+                <input type="email" class="form-control lesson-input" placeholder="Email Address *" required/>
+              </div>
+              <div class="col-12 col-sm-6">
+                <input type="tel" class="form-control lesson-input" placeholder="Phone Number"/>
+              </div>
+              <div class="col-12 col-sm-6">
+                <select class="form-control lesson-input" style="appearance:none;">
+                  <option value="" disabled selected>Select a Class…</option>
+                  <option>Introduction to Boxing</option>
+                  <option>Professional Body Pump</option>
+                  <option>Women's Boxing</option>
+                  <option>Coed Boxing</option>
+                  <option>Boxing for Teens</option>
+                  <option>Personal Training</option>
+                  <option>Suspension Weight Training</option>
+                  <option>Kickboxing Exercises</option>
+                  <option>Body Stretching Exercises</option>
+                </select>
+              </div>
+              <div class="col-12 d-flex flex-wrap align-items-center gap-3">
+                <button type="submit" class="btn-lesson">Book a Lesson</button>
+                <div id="lessonToast" class="lesson-toast d-none d-flex align-items-center gap-2 px-3 py-2">
+                  <i class="bi bi-check-circle-fill"></i> Booked! We'll be in touch soon.
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- /free-lesson-banner -->
+
+</section>
+<!-- ══════════════════════════════════════════════════════════════════
+     END SECTION: WHAT WE OFFER
+     ══════════════════════════════════════════════════════════════════ -->
+
+  <!-- FOOTER -->
+  <footer class="site-footer py-5">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row g-5 mb-5">
+        <div class="col-12 col-lg-4">
+          <div class="footer-logo mb-3"><span>KONMON</span>DEH</div>
+          <p class="footer-desc mb-3">The official website of Konmon Deh — Head Coach MMA, Double European Champion, and performance architect guiding elite fighters to world titles.</p>
+          <div class="d-flex gap-2">
+            <a class="social-btn" href="https://www.instagram.com/konmon_deh" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a class="social-btn" href="https://www.facebook.com/konmon.deh/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <!-- <a class="social-btn" href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a class="social-btn" href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a> -->
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="footer-heading">Navigation</div>
+          <ul class="footer-link-list">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Biography</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">News</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="footer-heading">Pages</div>
+          <ul class="footer-link-list">
+            <li><a href="coaching.html">Coaching</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="footer-heading">Shop</div>
+          <ul class="footer-link-list">
+            <li><a href="#">Challenger Gloves</a></li>
+            <li><a href="#">Handwraps</a></li>
+            <li><a href="#">Headguard</a></li>
+            <li><a href="#">Sparring Gloves</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-top border-secondary pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+        <p class="footer-copy mb-0">© 2026 <span>Coach Konmon</span>. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Reveal on scroll
+    const obs = new IntersectionObserver(e => e.forEach(en => { if(en.isIntersecting){ en.target.classList.add('visible'); obs.unobserve(en.target); } }), {threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Sticky header bg
+    const nav = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => nav.style.background = scrollY > 60 ? 'rgba(8,8,8,.98)' : '');
+
+    // Count-up stats
+    function countUp(el, target, ms=1600){ let v=0; const s=target/(ms/16); const t=setInterval(()=>{ v+=s; if(v>=target){el.textContent=target;clearInterval(t);}else{el.textContent=Math.floor(v);} },16); }
+    setTimeout(()=>{ countUp(document.getElementById('s1'),20); countUp(document.getElementById('s2'),3); countUp(document.getElementById('s3'),3); countUp(document.getElementById('s4'),2,600); },500);
+  </script>
+
+  
+
+<!-- ── SECTION JAVASCRIPT (add once to your page, after Bootstrap JS) -->
+<script>
+  /* ── Filter tabs ── */
+  document.getElementById('serviceFilters').addEventListener('click', function(e) {
+    const tab = e.target.closest('.filter-tab');
+    if (!tab) return;
+    // update active tab
+    this.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const filter = tab.dataset.filter;
+    // show/hide cards
+    document.querySelectorAll('.service-item').forEach(item => {
+      const match = filter === 'all' || item.dataset.category === filter;
+      item.style.display = match ? '' : 'none';
+    });
+  });
+
+  /* ── Free lesson form ── */
+  document.getElementById('freeLessonForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const toast = document.getElementById('lessonToast');
+    const fields = this.querySelectorAll('[required]');
+    let valid = true;
+    fields.forEach(f => {
+      if (!f.value.trim()) { f.style.borderColor = 'var(--red, #e8212e)'; valid = false; }
+      else f.style.borderColor = '';
+    });
+    if (!valid) return;
+    toast.classList.remove('d-none');
+    setTimeout(() => toast.classList.add('d-none'), 4000);
+    this.reset();
+  });
+</script>
+<!-- ── END SECTION JAVASCRIPT ── -->
+
+<div class="gtranslate_wrapper"></div>
+    <script>window.gtranslateSettings = {"default_language":"en","detect_browser_language":true, "wrapper_selector":".gtranslate_wrapper","alt_flags":{"en": "usa"}}</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+
+
+</body>
+</html>

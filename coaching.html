@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coaching – Konmon Deh</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --red: #e8212e; --red-dark: #c41a26;
+      --dark: #0d0d0d; --dark2: #141414; --dark3: #1c1c1c;
+      --muted: #777;
+      --font-d: 'Oswald', sans-serif;
+      --font-b: 'Barlow', sans-serif;
+      --font-c: 'Barlow Condensed', sans-serif;
+    }
+    body { background: var(--dark); color: #f0f0f0; font-family: var(--font-b); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+    /* NAVBAR */
+    .navbar { background: rgba(10,10,10,.95) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .navbar-brand { font-family: var(--font-d); font-size: 1.9rem; font-weight: 700; letter-spacing: 3px; color: #fff !important; }
+    .navbar-brand span { color: var(--red); }
+    .navbar-nav .nav-link { font-family: var(--font-d); font-size: .82rem; letter-spacing: 2px; text-transform: uppercase; color: #ccc !important; padding: 8px 14px !important; position: relative; transition: color .25s; }
+    .navbar-nav .nav-link::after { content: ''; position: absolute; bottom: 0; left: 14px; right: 100%; height: 2px; background: var(--red); transition: right .3s; }
+    .navbar-nav .nav-link:hover { color: #fff !important; }
+    .navbar-nav .nav-link:hover::after { right: 14px; }
+    .btn-nav-cta { background: var(--red) !important; color: #fff !important; border-radius: 0 !important; font-family: var(--font-d); font-size: .8rem; letter-spacing: 2px; text-transform: uppercase; }
+    .btn-nav-cta:hover { background: var(--red-dark) !important; }
+    .navbar-toggler { border-color: rgba(255,255,255,.2); }
+    .navbar-toggler-icon { filter: invert(1); }
+
+    /* PAGE HERO */
+    .page-hero {
+      min-height: 300px; margin-top: 60px;
+      background: linear-gradient(135deg,rgba(232,33,46,.2) 0%,transparent 55%),
+        linear-gradient(to bottom,rgba(13,13,13,.25),rgba(13,13,13,.88)),
+        url('assets/breadcrumbs-bg-copyright.jpg') center/cover no-repeat;
+      display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center;
+      border-left: 5px solid var(--red);
+    }
+    .page-hero h1 { font-family: var(--font-c); font-size: clamp(2.8rem,6vw,5rem); font-weight: 800; text-transform: uppercase; color: #fff; letter-spacing: 3px; animation: fadeDown .8s ease both; }
+    @keyframes fadeDown { from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);} }
+    .breadcrumb-custom { font-family: var(--font-d); font-size: .76rem; letter-spacing: 2px; text-transform: uppercase; animation: fadeDown .8s ease .15s both; }
+    .breadcrumb-custom a { color: var(--red); }
+    .breadcrumb-custom span { color: rgba(255,255,255,.2); }
+
+    /* SHARED */
+    .section-tag { font-family: var(--font-d); font-size: .74rem; letter-spacing: 4px; text-transform: uppercase; color: var(--red); display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .section-tag::before { content: ''; display: inline-block; width: 28px; height: 2px; background: var(--red); }
+    .section-tag.center { justify-content: center; }
+    .section-tag.center::before { display: none; }
+    .section-title { font-family: var(--font-c); font-size: clamp(2rem,4vw,3rem); font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.05; }
+    .red-divider { width: 48px; height: 3px; background: var(--red); }
+    .muted-text { color: rgba(255,255,255,.55); line-height: 1.85; }
+    .btn-primary-custom {
+      display: inline-block; background: var(--red); color: #fff; border: none;
+      font-family: var(--font-d); font-size: .83rem; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 600; padding: 14px 38px;
+      clip-path: polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+      transition: background .25s, transform .2s;
+    }
+    .btn-primary-custom:hover { background: var(--red-dark); color: #fff; transform: translateY(-2px); }
+
+    /* INTRO VIDEO */
+    .intro-video-wrap { position: relative; overflow: hidden; min-height: 420px; background: #000; }
+    .intro-video-wrap img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.45); transition: transform .6s; min-height: 420px; }
+    .intro-video-wrap:hover img { transform: scale(1.04); }
+    .play-circle {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 70px; height: 70px; border-radius: 50%; background: var(--red);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 14px rgba(232,33,46,.18); transition: transform .3s, background .3s; cursor: pointer;
+    }
+    .play-circle i { color: #fff; font-size: 1.4rem; margin-left: 4px; }
+    .play-circle:hover { transform: translate(-50%,-50%) scale(1.12); background: var(--red-dark); }
+
+    /* BILLING TOGGLE */
+    .billing-toggle { background: var(--dark3); border: 1px solid rgba(255,255,255,.07); display: inline-flex; }
+    .toggle-btn { font-family: var(--font-d); font-size: .78rem; letter-spacing: 2px; text-transform: uppercase; padding: 10px 28px; border: none; background: transparent; color: var(--muted); transition: background .25s, color .25s; cursor: pointer; }
+    .toggle-btn.active { background: var(--red); color: #fff; }
+    .save-pill { background: rgba(232,33,46,.15); border: 1px solid rgba(232,33,46,.3); color: var(--red); font-family: var(--font-d); font-size: .6rem; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; }
+
+    /* PLAN CARDS */
+    .plan-card { background: var(--dark3); border: 1px solid rgba(255,255,255,.06); overflow: hidden; display: flex; flex-direction: column; position: relative; transition: transform .35s, border-color .35s, box-shadow .35s; height: 100%; }
+    .plan-card:hover { transform: translateY(-8px); border-color: rgba(232,33,46,.4); box-shadow: 0 20px 55px rgba(232,33,46,.12); }
+    .plan-card.featured { border-color: var(--red); transform: translateY(-12px); box-shadow: 0 24px 65px rgba(232,33,46,.2); }
+    .plan-card.featured:hover { transform: translateY(-20px); }
+    .plan-ribbon { position: absolute; top: 18px; right: -28px; background: var(--red); color: #fff; font-family: var(--font-d); font-size: .62rem; letter-spacing: 2px; text-transform: uppercase; padding: 5px 36px; transform: rotate(45deg); font-weight: 600; }
+    .plan-img-wrap { position: relative; height: 185px; overflow: hidden; }
+    .plan-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.55); transition: transform .5s, filter .5s; }
+    .plan-card:hover .plan-img-wrap img { transform: scale(1.07); filter: brightness(.42); }
+    .plan-img-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, rgba(28,28,28,.95) 100%); }
+    .plan-tier { position: absolute; bottom: 14px; left: 20px; font-family: var(--font-d); font-size: .67rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.5); }
+    .plan-card.featured .plan-tier { color: var(--red); }
+    .plan-name { font-family: var(--font-c); font-size: 1.45rem; font-weight: 800; text-transform: uppercase; color: #fff; }
+    .plan-currency { font-family: var(--font-c); font-size: 1.3rem; font-weight: 700; color: var(--red); align-self: flex-start; margin-top: 6px; }
+    .plan-amount { font-family: var(--font-c); font-size: 3.2rem; font-weight: 800; line-height: 1; color: var(--red); }
+    .plan-period { font-family: var(--font-d); font-size: .7rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .plan-features { list-style: none; padding: 0; }
+    .plan-features li { display: flex; align-items: flex-start; gap: 10px; font-size: .88rem; color: rgba(255,255,255,.52); line-height: 1.5; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .plan-features li:last-child { border-bottom: none; }
+    .plan-features li.hl { color: rgba(255,255,255,.85); }
+    .plan-features li i { color: var(--red); font-size: .85rem; margin-top: 2px; flex-shrink: 0; }
+    .btn-join { display: block; text-align: center; padding: 13px; font-family: var(--font-d); font-size: .78rem; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; transition: background .25s, border-color .25s, color .25s, transform .2s; clip-path: polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px)); }
+    .btn-join-outline { border: 2px solid rgba(255,255,255,.15); color: #ccc; background: transparent; }
+    .btn-join-outline:hover { border-color: var(--red); background: rgba(232,33,46,.1); color: #fff; }
+    .btn-join-solid { background: var(--red); color: #fff; border: 2px solid var(--red); }
+    .btn-join-solid:hover { background: var(--red-dark); border-color: var(--red-dark); transform: translateY(-2px); }
+
+    /* STATS */
+    .stats-strip { background: var(--red); }
+    .stat-cell { padding: 44px 28px; text-align: center; border-right: 1px solid rgba(255,255,255,.15); }
+    .stat-cell:last-child { border-right: none; }
+    .stat-num { font-family: var(--font-c); font-size: 3rem; font-weight: 800; color: #fff; line-height: 1; }
+    .stat-plus { color: rgba(255,255,255,.55); font-size: 1.8rem; }
+    .stat-lbl { font-family: var(--font-d); font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.7); margin-top: 6px; }
+
+    /* PERSONAL TRAINING */
+    .pt-section { background: var(--dark2); }
+    .pt-img-wrap { position: relative; overflow: hidden; min-height: 420px; }
+    .pt-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.5); min-height: 420px; transition: transform .6s; }
+    .pt-img-wrap:hover img { transform: scale(1.04); }
+    .pt-badge { position: absolute; bottom: 0; left: 0; right: 0; background: var(--red); padding: 15px 24px; font-family: var(--font-d); font-size: .76rem; letter-spacing: 3px; text-transform: uppercase; color: #fff; font-weight: 600; }
+    .pt-highlight { background: var(--dark3); border-left: 3px solid var(--red); font-size: .92rem; color: rgba(255,255,255,.7); line-height: 1.7; }
+
+    /* DISCOUNTS */
+    .disc-section { background: var(--dark3); }
+    .disc-img-wrap { position: relative; overflow: hidden; min-height: 420px; }
+    .disc-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.42); min-height: 420px; transition: transform .6s; }
+    .disc-img-wrap:hover img { transform: scale(1.04); }
+    .disc-img-label { position: absolute; top: 28px; left: 28px; background: var(--red); color: #fff; padding: 7px 18px; font-family: var(--font-d); font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; }
+    .age-card { background: var(--dark2); border: 1px solid rgba(255,255,255,.07); transition: border-color .25s; }
+    .age-card:hover { border-color: rgba(232,33,46,.35); }
+    .age-label { font-family: var(--font-d); font-size: .66rem; letter-spacing: 2px; text-transform: uppercase; color: var(--red); }
+    .age-value { font-family: var(--font-c); font-size: 1.5rem; font-weight: 800; color: #fff; }
+    .age-note { font-size: .8rem; color: rgba(255,255,255,.38); }
+
+    /* FAQ */
+    .faq-section { background: var(--dark); }
+    .faq-item { background: var(--dark3); border: 1px solid rgba(255,255,255,.06); overflow: hidden; margin-bottom: 12px; }
+    .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 20px 22px; cursor: pointer; font-family: var(--font-d); font-size: .92rem; letter-spacing: 1px; text-transform: uppercase; color: #fff; font-weight: 600; user-select: none; transition: color .25s; }
+    .faq-question:hover { color: var(--red); }
+    .faq-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(232,33,46,.12); border: 1px solid rgba(232,33,46,.3); display: flex; align-items: center; justify-content: center; color: var(--red); font-size: 1.1rem; flex-shrink: 0; transition: transform .3s, background .3s; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--red); color: #fff; }
+    .faq-answer { max-height: 0; overflow: hidden; padding: 0 22px; transition: max-height .4s ease, padding .3s; font-size: .9rem; line-height: 1.75; color: rgba(255,255,255,.5); }
+    .faq-item.open .faq-answer { max-height: 200px; padding: 0 22px 18px; }
+
+    /* RED CTA */
+    .red-cta { background: var(--red); position: relative; overflow: hidden; }
+    .red-cta::before { content: 'JOIN'; position: absolute; left: -20px; top: -20px; font-family: var(--font-c); font-size: 18rem; font-weight: 800; color: rgba(255,255,255,.05); line-height: 1; pointer-events: none; }
+    .red-cta h2 { font-family: var(--font-c); font-size: clamp(2rem,4vw,3.2rem); font-weight: 800; text-transform: uppercase; color: #fff; }
+    .red-cta p { color: rgba(255,255,255,.82); line-height: 1.7; }
+    .btn-cta-white { background: #fff; color: var(--red); font-family: var(--font-d); font-size: .85rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; padding: 14px 40px; border: none; transition: background .25s, transform .2s; }
+    .btn-cta-white:hover { background: #f0f0f0; color: var(--red); transform: translateY(-2px); }
+
+    /* FOOTER */
+    .site-footer { background: #080808; border-top: 1px solid rgba(255,255,255,.06); }
+    .footer-logo { font-family: var(--font-d); font-size: 1.8rem; font-weight: 700; letter-spacing: 3px; color: #fff; }
+    .footer-logo span { color: var(--red); }
+    .footer-desc { font-size: .88rem; line-height: 1.8; color: rgba(255,255,255,.38); }
+    .footer-heading { font-family: var(--font-d); font-size: .76rem; letter-spacing: 3px; text-transform: uppercase; color: #fff; border-bottom: 1px solid rgba(255,255,255,.07); padding-bottom: 10px; margin-bottom: 16px; }
+    .footer-link-list { list-style: none; padding: 0; }
+    .footer-link-list li + li { margin-top: 8px; }
+    .footer-link-list a { font-size: .88rem; color: rgba(255,255,255,.4); display: flex; align-items: center; gap: 8px; transition: color .25s, padding-left .25s; }
+    .footer-link-list a::before { content: '—'; font-size: .65rem; color: var(--red); }
+    .footer-link-list a:hover { color: #fff; padding-left: 4px; }
+    .social-btn { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: var(--muted); font-family: var(--font-d); font-size: .75rem; transition: border-color .25s, background .25s, color .25s; }
+    .social-btn:hover { border-color: var(--red); background: var(--red); color: #fff; }
+    .footer-copy { font-size: .82rem; color: rgba(255,255,255,.26); }
+    .footer-copy span { color: var(--red); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-1 { transition-delay: .1s; }
+    .reveal-2 { transition-delay: .2s; }
+    .reveal-3 { transition-delay: .3s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top py-2">
+    <div class="container-fluid px-4 px-lg-5">
+      <a class="navbar-brand" href="index.html"><span>KONMON</span>DEH</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="coaching.html">Coaching</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item ms-lg-2"><a class="nav-link btn btn-nav-cta px-3 py-2" href="contact.html">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero py-5">
+    <h1>Membership</h1>
+    <div class="breadcrumb-custom d-flex align-items-center gap-2 mt-3">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <span style="color:#fff">Membership</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="row g-0" style="background:var(--dark2)">
+    <div class="col-12 col-lg-6 intro-video-wrap reveal">
+      <img src="assets/konmon5.png" alt="Training"/>
+      <div class="play-circle"><i class="bi bi-play-fill"></i></div>
+    </div>
+    <div class="col-12 col-lg-6 py-5 px-4 px-lg-5 d-flex flex-column justify-content-center" style="background:var(--dark2)">
+      <div class="section-tag reveal">Join Us</div>
+      <h2 class="section-title reveal reveal-1">Become a <span style="color:var(--red)">Member</span></h2>
+      <div class="red-divider mt-3 mb-4 reveal reveal-1"></div>
+      <p class="muted-text reveal reveal-1">Train under Head Coach Konmon Deh — a Double European Champion with 20+ years in combat sports. As the strategic mind behind three reigning world and European champions, his elite-level experience shapes every session.</p>
+      <p class="muted-text reveal reveal-2">Whether you're a complete beginner or an aspiring competitor, Konmon's coaching methodology is built on discipline, precision, and the holistic performance approach that has produced champions at the highest level.</p>
+      <a class="btn-primary-custom reveal reveal-2 align-self-start" href="contact.html">Book Your First Class</a>
+    </div>
+  </div>
+
+  <!-- PLANS HEADER -->
+  <section class="py-5" style="background:var(--dark)">
+    <div class="container-fluid px-4 px-lg-5 text-center">
+      <div class="section-tag center reveal">Pricing</div>
+      <h2 class="section-title reveal reveal-1">Pay-As-You-Train or Go <span style="color:var(--red)">Unlimited.</span> You Choose!</h2>
+      <p class="mx-auto mt-2 mb-4 reveal reveal-1" style="color:rgba(255,255,255,.5);max-width:580px;line-height:1.7">Flexible plans designed for every level. Start training with a certified Head Coach who brings 20+ years of combat sports expertise and a proven champion-building methodology to every session.</p>
+      <div class="billing-toggle reveal reveal-2 mb-5">
+        <button class="toggle-btn active" id="btnMonthly">Monthly</button>
+        <button class="toggle-btn" id="btnYearly">Yearly <span class="save-pill">Save 20%</span></button>
+      </div>
+
+      <!-- PLAN CARDS -->
+      <div class="row g-4 justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 reveal">
+          <div class="plan-card">
+            <div class="plan-img-wrap">
+              <img src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=600&q=80&fit=crop" alt="Pay-as-you-train"/>
+              <div class="plan-img-overlay"></div>
+              <div class="plan-tier">Pay-As-You-Train</div>
+            </div>
+            <div class="p-4 flex-fill d-flex flex-column">
+              <div class="plan-name mb-1">Pay-as-you-train</div>
+              <div class="d-flex align-items-end gap-1 border-bottom border-secondary py-3 mb-3">
+                <span class="plan-currency">$</span>
+                <span class="plan-amount" id="p-payt">99</span>
+                <span class="plan-period ms-1" id="per-payt">/year</span>
+              </div>
+              <ul class="plan-features flex-fill">
+                <li class="hl"><i class="bi bi-check-circle-fill"></i>10 FREE Classes</li>
+                <li class="hl"><i class="bi bi-check-circle-fill"></i>5 FREE Gym &amp; Studio Use</li>
+                <li><i class="bi bi-check-circle-fill"></i>Exclusive Partner Discounts</li>
+                <li><i class="bi bi-check-circle-fill"></i>Classes from $6</li>
+                <li><i class="bi bi-check-circle-fill"></i>Gym &amp; Studio Use from $6</li>
+                <li><i class="bi bi-check-circle-fill"></i>Personal Training from $20</li>
+                <li><i class="bi bi-check-circle-fill"></i>Upgrade anytime</li>
+              </ul>
+              <a class="btn-join btn-join-outline mt-3" href="contact.html">Join Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 reveal reveal-1">
+          <div class="plan-card featured">
+            <div class="plan-ribbon">Popular</div>
+            <div class="plan-img-wrap">
+              <img src="https://images.unsplash.com/photo-1567013127542-490d757e6349?w=600&q=80&fit=crop" alt="Gym Only"/>
+              <div class="plan-img-overlay"></div>
+              <div class="plan-tier">Gym Only</div>
+            </div>
+            <div class="p-4 flex-fill d-flex flex-column">
+              <div class="plan-name mb-1">Gym Only</div>
+              <div class="d-flex align-items-end gap-1 border-bottom border-secondary py-3 mb-3">
+                <span class="plan-currency">$</span>
+                <span class="plan-amount" id="p-gym">45</span>
+                <span class="plan-period ms-1" id="per-gym">/month</span>
+              </div>
+              <ul class="plan-features flex-fill">
+                <li class="hl"><i class="bi bi-check-circle-fill"></i>UNLIMITED Gym &amp; Studio Use</li>
+                <li class="hl"><i class="bi bi-check-circle-fill"></i>5 FREE Classes a month</li>
+                <li><i class="bi bi-check-circle-fill"></i>Exclusive Partner Discounts</li>
+                <li><i class="bi bi-check-circle-fill"></i>Classes from $6</li>
+                <li><i class="bi bi-check-circle-fill"></i>Personal Training from $20</li>
+                <li><i class="bi bi-check-circle-fill"></i>Upgrade anytime</li>
+                <li><i class="bi bi-check-circle-fill"></i>Change/cancel after 6 months</li>
+              </ul>
+              <a class="btn-join btn-join-solid mt-3" href="contact.html">Join Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4 reveal reveal-2">
+          <div class="plan-card">
+            <div class="plan-img-wrap">
+              <img src="https://images.unsplash.com/photo-1517438984742-1262db08379e?w=600&q=80&fit=crop" alt="Unlimited"/>
+              <div class="plan-img-overlay"></div>
+              <div class="plan-tier">Unlimited</div>
+            </div>
+            <div class="p-4 flex-fill d-flex flex-column">
+              <div class="plan-name mb-1">Unlimited</div>
+              <div class="d-flex align-items-end gap-1 border-bottom border-secondary py-3 mb-3">
+                <span class="plan-currency">$</span>
+                <span class="plan-amount" id="p-unlim">85</span>
+                <span class="plan-period ms-1" id="per-unlim">/month</span>
+              </div>
+              <ul class="plan-features flex-fill">
+                <li class="hl"><i class="bi bi-check-circle-fill"></i>UNLIMITED Classes</li>
+                <li class="hl"><i class="bi bi-check-circle-fill"></i>UNLIMITED Gym &amp; Studio Use</li>
+                <li class="hl"><i class="bi bi-check-circle-fill"></i>UNLIMITED Guest Passes</li>
+                <li><i class="bi bi-check-circle-fill"></i>Exclusive Partner Discounts</li>
+                <li><i class="bi bi-check-circle-fill"></i>Personal Training from $20</li>
+                <li><i class="bi bi-check-circle-fill"></i>Change/cancel after 6 months</li>
+                <li><i class="bi bi-check-circle-fill"></i>No setup fee</li>
+              </ul>
+              <a class="btn-join btn-join-outline mt-3" href="contact.html">Join Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="row g-0">
+      <div class="col-6 col-lg-3 stat-cell reveal"><div class="stat-num"><span class="count-up" data-target="1200">0</span><span class="stat-plus">+</span></div><div class="stat-lbl">Active Members</div></div>
+      <div class="col-6 col-lg-3 stat-cell reveal reveal-1"><div class="stat-num"><span class="count-up" data-target="48">0</span></div><div class="stat-lbl">Weekly Classes</div></div>
+      <div class="col-6 col-lg-3 stat-cell reveal reveal-2"><div class="stat-num"><span class="count-up" data-target="12">0</span></div><div class="stat-lbl">Expert Coaches</div></div>
+      <div class="col-6 col-lg-3 stat-cell reveal reveal-3"><div class="stat-num"><span class="count-up" data-target="8">0</span></div><div class="stat-lbl">Years Running</div></div>
+    </div>
+  </div>
+
+  <!-- PERSONAL TRAINING -->
+  <div class="row g-0 pt-section" style="background:var(--dark2)">
+    <div class="col-12 col-lg-6 py-5 px-4 px-lg-5 d-flex flex-column justify-content-center">
+      <div class="section-tag reveal">1-on-1</div>
+      <h2 class="section-title reveal reveal-1">1-2-1 Personal <span style="color:var(--red)">Training</span></h2>
+      <div class="red-divider mt-3 mb-4 reveal reveal-1"></div>
+      <p class="muted-text reveal reveal-1">If you are completely new to MMA, want to learn at your own pace, get faster results or be in the best shape of your life, Personal Training with Coach Konmon is for you.</p>
+      <div class="pt-highlight p-3 mb-4 reveal reveal-2">60-minute personal training session tailored to suit your needs. Aimed at improving your boxing technique, heighten your fitness and reach new levels. <br><strong class="text-white">Sessions are $50 · $60 for non-members</strong></div>
+      <a class="btn-primary-custom reveal reveal-2 align-self-start" href="contact.html">Book an Appointment</a>
+    </div>
+    <div class="col-12 col-lg-6 pt-img-wrap reveal">
+      <img src="assets/konmon7.png" alt="Personal Training"/>
+      <div class="pt-badge">Private Sessions Available</div>
+    </div>
+  </div>
+
+  <!-- DISCOUNTS -->
+  <div class="row g-0 disc-section">
+    <div class="col-12 col-lg-5 disc-img-wrap reveal">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=900&q=80&fit=crop" alt="Discounts"/>
+      <div class="disc-img-label">Benefits</div>
+    </div>
+    <div class="col-12 col-lg-7 py-5 px-4 px-lg-5 d-flex flex-column justify-content-center" style="background:var(--dark3)">
+      <div class="section-tag reveal">Discounts</div>
+      <h2 class="section-title reveal reveal-1">Membership <span style="color:var(--red)">Discounts</span></h2>
+      <div class="red-divider mt-3 mb-4 reveal reveal-1"></div>
+      <p class="muted-text reveal reveal-1">Reduced rates are available for members under the age of 18. Minimum age required to train is 8 years old. Children under the age of 12 must be accompanied by a parent or guardian at all times.</p>
+      <div class="row g-3 mb-4">
+        <div class="col-6 reveal reveal-1"><div class="age-card p-3"><div class="age-label">Minimum Age</div><div class="age-value">8 Years</div><div class="age-note">Required to train</div></div></div>
+        <div class="col-6 reveal reveal-2"><div class="age-card p-3"><div class="age-label">Under 18</div><div class="age-value">Reduced Rates</div><div class="age-note">Ask us for details</div></div></div>
+        <div class="col-6 reveal reveal-1"><div class="age-card p-3"><div class="age-label">Under 12</div><div class="age-value">Guardian Required</div><div class="age-note">Must be accompanied</div></div></div>
+        <div class="col-6 reveal reveal-2"><div class="age-card p-3"><div class="age-label">Students</div><div class="age-value">10% Off</div><div class="age-note">Valid ID required</div></div></div>
+      </div>
+      <a class="btn-primary-custom reveal reveal-2 align-self-start" href="contact.html">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-section py-5 py-lg-6">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="section-tag center reveal text-center justify-content-center mb-2">FAQ</div>
+      <h2 class="section-title text-center mb-5 reveal reveal-1">Frequently Asked <span style="color:var(--red)">Questions</span></h2>
+      <div class="row g-0 justify-content-center">
+        <div class="col-12 col-lg-10">
+          <div class="row g-3">
+            <div class="col-12 col-md-6 reveal">
+              <div class="faq-item"><div class="faq-question">Can I freeze my membership?<span class="faq-icon">+</span></div><div class="faq-answer">Members can freeze their membership for up to 3 months per year with no additional charge. Contact us at least 5 days before your next billing date.</div></div>
+            </div>
+            <div class="col-12 col-md-6 reveal reveal-1">
+              <div class="faq-item"><div class="faq-question">Is there a joining fee?<span class="faq-icon">+</span></div><div class="faq-answer">The Unlimited plan has no setup fee. The Gym Only and Pay-As-You-Train plans have a one-time $15 card fee covering your access card and member profile setup.</div></div>
+            </div>
+            <div class="col-12 col-md-6 reveal">
+              <div class="faq-item"><div class="faq-question">What's included in a free class?<span class="faq-icon">+</span></div><div class="faq-answer">Free classes cover any scheduled group session including MMA Fundamentals, Boxing Conditioning, Kickboxing, and Strength &amp; Conditioning.</div></div>
+            </div>
+            <div class="col-12 col-md-6 reveal reveal-1">
+              <div class="faq-item"><div class="faq-question">Can I cancel anytime?<span class="faq-icon">+</span></div><div class="faq-answer">Monthly memberships can be cancelled after a minimum 6-month commitment. The Pay-As-You-Train annual plan is non-refundable after the first 14 days.</div></div>
+            </div>
+            <div class="col-12 col-md-6 reveal">
+              <div class="faq-item"><div class="faq-question">Do you offer corporate memberships?<span class="faq-icon">+</span></div><div class="faq-answer">Yes! We offer tailored corporate wellness packages for teams of 5 or more. Contact us and a membership manager will reach out within 48 hours.</div></div>
+            </div>
+            <div class="col-12 col-md-6 reveal reveal-1">
+              <div class="faq-item"><div class="faq-question">Can I bring a guest?<span class="faq-icon">+</span></div><div class="faq-answer">Unlimited members receive unlimited guest passes. Other plans can purchase guest day passes at the front desk for $12 per visit.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RED CTA -->
+  <div class="red-cta py-5 text-center">
+    <div class="container position-relative">
+      <h2 class="mb-3">Ready to Start Your Journey?</h2>
+      <p class="mx-auto mb-4" style="max-width:500px">Choose a plan that works for you and take the first step toward becoming your best self. No excuses — just results.</p>
+      <a href="contact.html" class="btn btn-cta-white">Get Started Today</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer py-5">
+    <div class="container-fluid px-4 px-lg-5">
+      <div class="row g-5 mb-5">
+        <div class="col-12 col-lg-4">
+          <div class="footer-logo mb-3"><span>KONMON</span>DEH</div>
+          <p class="footer-desc mb-3">The official website of Konmon Deh — Head Coach MMA, Double European Champion, and performance architect guiding elite fighters to world titles.</p>
+          <div class="d-flex gap-2">
+            <a class="social-btn" href="https://www.instagram.com/konmon_deh" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a class="social-btn" href="https://www.facebook.com/konmon.deh/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <!-- <a class="social-btn" href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a class="social-btn" href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a> -->
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="footer-heading">Navigation</div>
+          <ul class="footer-link-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Biography</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">News</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="footer-heading">Pages</div>
+          <ul class="footer-link-list">
+            <li><a href="coaching.html">Coaching</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="footer-heading">Shop</div>
+          <ul class="footer-link-list">
+            <li><a href="#">Challenger Gloves</a></li>
+            <li><a href="#">Handwraps</a></li>
+            <li><a href="#">Headguard</a></li>
+            <li><a href="#">Sparring Gloves</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-top border-secondary pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+        <p class="footer-copy mb-0">© 2026 <span>Coach Konmon</span>. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Reveal
+    const obs = new IntersectionObserver(e => e.forEach(en => { if(en.isIntersecting){ en.target.classList.add('visible'); obs.unobserve(en.target); } }), {threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Header
+    const nav = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => nav.style.background = scrollY > 60 ? 'rgba(8,8,8,.98)' : '');
+
+    // Billing toggle
+    const monthly = { payt:['99','/year'], gym:['45','/month'], unlim:['85','/month'] };
+    const yearly  = { payt:['79','/year'], gym:['36','/month'], unlim:['68','/month'] };
+    function applyPrices(set){ Object.entries(set).forEach(([k,[p,per]])=>{ document.getElementById('p-'+k).textContent=p; document.getElementById('per-'+k).textContent=per; }); }
+    document.getElementById('btnMonthly').addEventListener('click',function(){ this.classList.add('active'); document.getElementById('btnYearly').classList.remove('active'); applyPrices(monthly); });
+    document.getElementById('btnYearly').addEventListener('click',function(){ this.classList.add('active'); document.getElementById('btnMonthly').classList.remove('active'); applyPrices(yearly); });
+
+    // Count-up
+    function countUp(el){ const t=parseInt(el.dataset.target),d=1600,s=t/(d/16); let v=0; const i=setInterval(()=>{ v+=s; if(v>=t){el.textContent=t;clearInterval(i);}else{el.textContent=Math.floor(v);} },16); }
+    const cObs = new IntersectionObserver(e => e.forEach(en => { if(en.isIntersecting){ countUp(en.target); cObs.unobserve(en.target); } }), {threshold:.5});
+    document.querySelectorAll('.count-up').forEach(el => cObs.observe(el));
+
+    // FAQ
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.closest('.faq-item'), isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if(!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+<div class="gtranslate_wrapper"></div>
+    <script>window.gtranslateSettings = {"default_language":"en","detect_browser_language":true, "wrapper_selector":".gtranslate_wrapper","alt_flags":{"en": "usa"}}</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+
+
+</body>
+</html>
