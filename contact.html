@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -71,6 +71,7 @@
       transition: border-color .25s, background .25s;
     }
     .form-control-dark::placeholder { color: rgba(255,255,255,.25) !important; }
+    .form-control-dark option { background: var(--dark3); color: #fff; }
     .form-control-dark:focus { border-color: var(--red) !important; background: rgba(232,33,46,.04) !important; box-shadow: none !important; }
     .form-label-dark { font-family: var(--font-d); font-size: .7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
     .btn-submit {
@@ -138,11 +139,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navMain">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Biographie</a></li>
           <li class="nav-item"><a class="nav-link" href="coaching.html">Coaching</a></li>
           <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-          <li class="nav-item ms-lg-2"><a class="nav-link btn btn-nav-cta px-3 py-2 active-link" href="contact.html">Contacts</a></li>
+          <li class="nav-item ms-lg-2"><a class="nav-link btn btn-nav-cta px-3 py-2 active-link" href="contact.html">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -150,11 +151,11 @@
 
   <!-- PAGE HERO -->
   <div class="page-hero py-5">
-    <h1>Contacts</h1>
+    <h1>Contact</h1>
     <div class="breadcrumb-custom d-flex align-items-center gap-2 mt-3">
-      <a href="index.html">Home</a>
+      <a href="index.html">Accueil</a>
       <span>/</span>
-      <span style="color:#fff">Contacts</span>
+      <span style="color:#fff">Contact</span>
     </div>
   </div>
 
@@ -169,64 +170,64 @@
 
     <!-- FORM -->
     <div class="col-12 col-lg-7 form-panel py-5 px-4 px-lg-5">
-      <div class="section-tag reveal">Send Us a Message</div>
-      <h2 class="section-title reveal reveal-1">Get In <span style="color:var(--red)">Touch</span></h2>
+      <div class="section-tag reveal">Envoyez-Nous un Message</div>
+      <h2 class="section-title reveal reveal-1">Contactez-<span style="color:var(--red)">Nous</span></h2>
       <div class="red-divider mt-3 mb-4 reveal reveal-1"></div>
 
       <form id="contactForm" novalidate>
         <div class="row g-3 mb-3">
           <div class="col-12 col-sm-6 reveal">
-            <label class="form-label-dark mb-1">First Name *</label>
-            <input type="text" class="form-control form-control-dark" placeholder="John" required/>
+            <label class="form-label-dark mb-1">Prénom *</label>
+            <input type="text" class="form-control form-control-dark" placeholder="Jean" required/>
           </div>
           <div class="col-12 col-sm-6 reveal reveal-1">
-            <label class="form-label-dark mb-1">Last Name *</label>
-            <input type="text" class="form-control form-control-dark" placeholder="Doe" required/>
+            <label class="form-label-dark mb-1">Nom *</label>
+            <input type="text" class="form-control form-control-dark" placeholder="Dupont" required/>
           </div>
         </div>
         <div class="row g-3 mb-3">
           <div class="col-12 col-sm-6 reveal">
-            <label class="form-label-dark mb-1">Email Address *</label>
-            <input type="email" class="form-control form-control-dark" placeholder="you@example.com" required/>
+            <label class="form-label-dark mb-1">Adresse Email *</label>
+            <input type="email" class="form-control form-control-dark" placeholder="vous@exemple.com" required/>
           </div>
           <div class="col-12 col-sm-6 reveal reveal-1">
-            <label class="form-label-dark mb-1">Phone Number</label>
-            <input type="tel" class="form-control form-control-dark" placeholder="+1 (212) 000-0000"/>
+            <label class="form-label-dark mb-1">Numéro de Téléphone</label>
+            <input type="tel" class="form-control form-control-dark" placeholder="+33 6 00 00 00 00"/>
           </div>
         </div>
         <div class="mb-3 reveal">
-          <label class="form-label-dark mb-1">Subject</label>
+          <label class="form-label-dark mb-1">Sujet</label>
           <select class="form-control form-control-dark" style="appearance:none">
-            <option value="" disabled selected>Select a topic…</option>
-            <option>General Inquiry</option>
-            <option>Training Sessions</option>
-            <option>Event Booking</option>
-            <option>Merchandise / Shop</option>
-            <option>Media &amp; Press</option>
-            <option>Other</option>
+            <option value="" disabled selected>Choisir un sujet…</option>
+            <option>Demande Générale</option>
+            <option>Sessions d'Entraînement</option>
+            <option>Réservation d'Événement</option>
+            <option>Boutique / Merchandising</option>
+            <option>Médias &amp; Presse</option>
+            <option>Autre</option>
           </select>
         </div>
         <div class="mb-3 reveal">
-          <label class="form-label-dark mb-1">Your Message *</label>
-          <textarea class="form-control form-control-dark" rows="5" placeholder="Write your message here…" required></textarea>
+          <label class="form-label-dark mb-1">Votre Message *</label>
+          <textarea class="form-control form-control-dark" rows="5" placeholder="Écrivez votre message ici…" required></textarea>
         </div>
         <div class="d-flex align-items-start gap-2 mb-4 reveal">
           <input type="checkbox" class="form-check-input mt-1" id="consent" style="accent-color:var(--red);background:var(--dark3);border-color:rgba(255,255,255,.2);border-radius:0" required/>
           <label class="form-check-label" for="consent" style="font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.6">
-            I agree that my submitted data is being collected and stored. Read our <a href="#" style="color:var(--red);border-bottom:1px solid rgba(232,33,46,.35)">Privacy Policy</a>.
+            J'accepte que mes données soient collectées et stockées. Lire notre <a href="#" style="color:var(--red);border-bottom:1px solid rgba(232,33,46,.35)">Politique de Confidentialité</a>.
           </label>
         </div>
-        <button type="submit" class="btn-submit reveal">Send Message</button>
+        <button type="submit" class="btn-submit reveal">Envoyer le Message</button>
         <div id="successToast" class="toast-success d-none d-flex align-items-center gap-2 p-3 mt-3">
           <i class="bi bi-check-circle-fill text-success"></i>
-          Message sent! We'll get back to you soon.
+          Message envoyé ! Nous vous répondrons bientôt.
         </div>
       </form>
     </div>
 
     <!-- INFO -->
     <div class="col-12 col-lg-5 info-panel py-5 px-4 px-lg-5">
-      <h3 class="reveal mb-1">Contact Info</h3>
+      <h3 class="reveal mb-1">Coordonnées</h3>
       <div class="red-divider mt-2 mb-4 reveal reveal-1"></div>
 
       <a href="mailto:info@yourmail.com" class="info-item d-flex align-items-start gap-3 py-4 reveal">
@@ -240,7 +241,7 @@
       <a href="tel:2123280493" class="info-item d-flex align-items-start gap-3 py-4 reveal reveal-1">
         <div class="info-icon"><i class="bi bi-telephone-fill"></i></div>
         <div>
-          <div class="info-label">Phone</div>
+          <div class="info-label">Téléphone</div>
           <div class="info-value">212-328-0493</div>
         </div>
       </a>
@@ -248,7 +249,7 @@
       <div class="info-item d-flex align-items-start gap-3 py-4 reveal reveal-1">
         <div class="info-icon"><i class="bi bi-geo-alt-fill"></i></div>
         <div>
-          <div class="info-label">Address</div>
+          <div class="info-label">Adresse</div>
           <div class="info-value small">91 Bd Poniatowski<br>75012 Paris, France</div>
         </div>
       </div>
@@ -256,12 +257,12 @@
       <!-- Hours -->
       <div class="hours-box p-3 mt-2 mb-4 reveal reveal-2">
         <div class="row g-2">
-          <div class="col-7 hours-day today">Monday – Friday</div>
+          <div class="col-7 hours-day today">Lundi – Vendredi</div>
           <div class="col-5 hours-time today text-end">9:00 – 21:00</div>
-          <div class="col-7 hours-day">Saturday</div>
+          <div class="col-7 hours-day">Samedi</div>
           <div class="col-5 hours-time text-end">10:00 – 18:00</div>
-          <div class="col-7 hours-day">Sunday</div>
-          <div class="col-5 hours-time text-end" style="color:var(--muted)">Closed</div>
+          <div class="col-7 hours-day">Dimanche</div>
+          <div class="col-5 hours-time text-end" style="color:var(--muted)">Fermé</div>
         </div>
       </div>
 
@@ -281,7 +282,7 @@
       <div class="row g-5 mb-5">
         <div class="col-12 col-lg-4">
           <div class="footer-logo mb-3"><span>KONMON</span>DEH</div>
-          <p class="footer-desc mb-3">The official website of Konmon Deh — Head Coach MMA, Double European Champion, and performance architect guiding elite fighters to world titles.</p>
+          <p class="footer-desc mb-3">Le site officiel de Konmon Deh — Head Coach MMA, Double Champion d'Europe et architecte de la performance guidant des combattants d'élite vers les titres mondiaux.</p>
           <div class="d-flex gap-2">
             <a class="social-btn" href="https://www.instagram.com/konmon_deh" target="_blank"><i class="fa-brands fa-instagram"></i></a>
             <a class="social-btn" href="https://www.facebook.com/konmon.deh/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
@@ -292,14 +293,14 @@
         <div class="col-6 col-md-3 col-lg-2">
           <div class="footer-heading">Navigation</div>
           <ul class="footer-link-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">Biography</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">News</a></li>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">Biographie</a></li>
+            <li><a href="coaching.html">Coaching</a></li>
+            <li><a href="services.html">Services</a></li>
           </ul>
         </div>
         <div class="col-6 col-md-3 col-lg-2">
-          <div class="footer-heading">Pages</div>
+          <div class="footer-heading">Liens</div>
           <ul class="footer-link-list">
             <li><a href="coaching.html">Coaching</a></li>
             <li><a href="services.html">Services</a></li>
@@ -308,17 +309,17 @@
           </ul>
         </div>
         <div class="col-6 col-md-3 col-lg-2">
-          <div class="footer-heading">Shop</div>
+          <div class="footer-heading">Boutique</div>
           <ul class="footer-link-list">
-            <li><a href="#">Challenger Gloves</a></li>
-            <li><a href="#">Handwraps</a></li>
-            <li><a href="#">Headguard</a></li>
-            <li><a href="#">Sparring Gloves</a></li>
+            <li><a href="#">Gants Challenger</a></li>
+            <li><a href="#">Bandes de Boxe</a></li>
+            <li><a href="#">Casque MMA</a></li>
+            <li><a href="#">Gants de Sparring</a></li>
           </ul>
         </div>
       </div>
       <div class="border-top border-secondary pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
-        <p class="footer-copy mb-0">© 2026 <span>Coach Konmon</span>. All Rights Reserved.</p>
+        <p class="footer-copy mb-0">© 2026 <span>Coach Konmon</span>. Tous droits réservés.</p>
       </div>
     </div>
   </footer>
@@ -348,7 +349,7 @@
 
 
 <div class="gtranslate_wrapper"></div>
-    <script>window.gtranslateSettings = {"default_language":"en","detect_browser_language":true, "wrapper_selector":".gtranslate_wrapper","alt_flags":{"en": "usa"}}</script>
+    <script>window.gtranslateSettings = {"default_language":"fr","detect_browser_language":true, "wrapper_selector":".gtranslate_wrapper","alt_flags":{"en": "usa"}}</script>
     <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
 
 
