@@ -218,7 +218,6 @@
   <div class="row g-0" style="background:var(--dark2)">
     <div class="col-12 col-lg-6 intro-video-wrap reveal">
       <img src="assets/konmon5.png" alt="Training"/>
-      <div class="play-circle"><i class="bi bi-play-fill"></i></div>
     </div>
     <div class="col-12 col-lg-6 py-5 px-4 px-lg-5 d-flex flex-column justify-content-center" style="background:var(--dark2)">
       <div class="section-tag reveal">Rejoignez-Nous</div>
@@ -229,107 +228,6 @@
       <a class="btn-primary-custom reveal reveal-2 align-self-start" href="contact.html">Réservez Votre Premier Cours</a>
     </div>
   </div>
-
-  <!-- PLANS HEADER -->
-  <section class="py-5" style="background:var(--dark)">
-    <div class="container-fluid px-4 px-lg-5 text-center">
-      <div class="section-tag center reveal">Tarifs</div>
-      <h2 class="section-title reveal reveal-1">À la Séance ou en <span style="color:var(--red)">Illimité.</span> À Vous de Choisir !</h2>
-      <p class="mx-auto mt-2 mb-4 reveal reveal-1" style="color:rgba(255,255,255,.5);max-width:580px;line-height:1.7">Des formules flexibles conçues pour chaque niveau. Entraînez-vous avec un Head Coach certifié apportant plus de 20 ans d'expertise et une méthodologie éprouvée à chaque session.</p>
-      <div class="billing-toggle reveal reveal-2 mb-5">
-        <button class="toggle-btn active" id="btnMonthly">Mensuel</button>
-        <button class="toggle-btn" id="btnYearly">Annuel <span class="save-pill">-20%</span></button>
-      </div>
-
-      <!-- PLAN CARDS -->
-      <div class="row g-4 justify-content-center">
-        <div class="col-12 col-md-6 col-lg-4 reveal">
-          <div class="plan-card">
-            <div class="plan-img-wrap">
-              <img src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=600&q=80&fit=crop" alt="Pay-as-you-train"/>
-              <div class="plan-img-overlay"></div>
-              <div class="plan-tier">Pay-As-You-Train</div>
-            </div>
-            <div class="p-4 flex-fill d-flex flex-column">
-              <div class="plan-name mb-1">À la Séance</div>
-              <div class="d-flex align-items-end gap-1 border-bottom border-secondary py-3 mb-3">
-                <span class="plan-currency">$</span>
-                <span class="plan-amount" id="p-payt">99</span>
-                <span class="plan-period ms-1" id="per-payt">/year</span>
-              </div>
-              <ul class="plan-features flex-fill">
-                <li class="hl"><i class="bi bi-check-circle-fill"></i>10 Cours OFFERTS</li>
-                <li class="hl"><i class="bi bi-check-circle-fill"></i>5 Accès Salle OFFERTS</li>
-                <li><i class="bi bi-check-circle-fill"></i>Réductions partenaires exclusives</li>
-                <li><i class="bi bi-check-circle-fill"></i>Cours à partir de 6$</li>
-                <li><i class="bi bi-check-circle-fill"></i>Accès salle à partir de 6$</li>
-                <li><i class="bi bi-check-circle-fill"></i>Coaching perso à partir de 20$</li>
-                <li><i class="bi bi-check-circle-fill"></i>Mise à niveau possible</li>
-              </ul>
-              <a class="btn-join btn-join-outline mt-3" href="contact.html">S'inscrire</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6 col-lg-4 reveal reveal-1">
-          <div class="plan-card featured">
-            <div class="plan-ribbon">Populaire</div>
-            <div class="plan-img-wrap">
-              <img src="https://images.unsplash.com/photo-1567013127542-490d757e6349?w=600&q=80&fit=crop" alt="Gym Only"/>
-              <div class="plan-img-overlay"></div>
-              <div class="plan-tier">Gym Only</div>
-            </div>
-            <div class="p-4 flex-fill d-flex flex-column">
-              <div class="plan-name mb-1">Salle Uniquement</div>
-              <div class="d-flex align-items-end gap-1 border-bottom border-secondary py-3 mb-3">
-                <span class="plan-currency">$</span>
-                <span class="plan-amount" id="p-gym">45</span>
-                <span class="plan-period ms-1" id="per-gym">/month</span>
-              </div>
-              <ul class="plan-features flex-fill">
-                <li class="hl"><i class="bi bi-check-circle-fill"></i>Accès salle ILLIMITÉ</li>
-                <li class="hl"><i class="bi bi-check-circle-fill"></i>5 Cours OFFERTS par mois</li>
-                <li><i class="bi bi-check-circle-fill"></i>Réductions partenaires exclusives</li>
-                <li><i class="bi bi-check-circle-fill"></i>Cours à partir de 6$</li>
-                <li><i class="bi bi-check-circle-fill"></i>Coaching perso à partir de 20$</li>
-                <li><i class="bi bi-check-circle-fill"></i>Mise à niveau possible</li>
-                <li><i class="bi bi-check-circle-fill"></i>Modification/annulation après 6 mois</li>
-              </ul>
-              <a class="btn-join btn-join-solid mt-3" href="contact.html">S'inscrire</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6 col-lg-4 reveal reveal-2">
-          <div class="plan-card">
-            <div class="plan-img-wrap">
-              <img src="https://images.unsplash.com/photo-1517438984742-1262db08379e?w=600&q=80&fit=crop" alt="Unlimited"/>
-              <div class="plan-img-overlay"></div>
-              <div class="plan-tier">Unlimited</div>
-            </div>
-            <div class="p-4 flex-fill d-flex flex-column">
-              <div class="plan-name mb-1">Illimité</div>
-              <div class="d-flex align-items-end gap-1 border-bottom border-secondary py-3 mb-3">
-                <span class="plan-currency">$</span>
-                <span class="plan-amount" id="p-unlim">85</span>
-                <span class="plan-period ms-1" id="per-unlim">/month</span>
-              </div>
-              <ul class="plan-features flex-fill">
-                <li class="hl"><i class="bi bi-check-circle-fill"></i>Cours ILLIMITÉS</li>
-                <li class="hl"><i class="bi bi-check-circle-fill"></i>Accès salle ILLIMITÉ</li>
-                <li class="hl"><i class="bi bi-check-circle-fill"></i>Pass invités ILLIMITÉS</li>
-                <li><i class="bi bi-check-circle-fill"></i>Réductions partenaires exclusives</li>
-                <li><i class="bi bi-check-circle-fill"></i>Coaching perso à partir de 20$</li>
-                <li><i class="bi bi-check-circle-fill"></i>Modification/annulation après 6 mois</li>
-                <li><i class="bi bi-check-circle-fill"></i>Sans frais d'inscription</li>
-              </ul>
-              <a class="btn-join btn-join-outline mt-3" href="contact.html">S'inscrire</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- STATS -->
   <div class="stats-strip">
@@ -476,13 +374,6 @@
     // Header
     const nav = document.querySelector('.navbar');
     window.addEventListener('scroll', () => nav.style.background = scrollY > 60 ? 'rgba(8,8,8,.98)' : '');
-
-    // Billing toggle
-    const monthly = { payt:['99','/year'], gym:['45','/month'], unlim:['85','/month'] };
-    const yearly  = { payt:['79','/year'], gym:['36','/month'], unlim:['68','/month'] };
-    function applyPrices(set){ Object.entries(set).forEach(([k,[p,per]])=>{ document.getElementById('p-'+k).textContent=p; document.getElementById('per-'+k).textContent=per; }); }
-    document.getElementById('btnMonthly').addEventListener('click',function(){ this.classList.add('active'); document.getElementById('btnYearly').classList.remove('active'); applyPrices(monthly); });
-    document.getElementById('btnYearly').addEventListener('click',function(){ this.classList.add('active'); document.getElementById('btnMonthly').classList.remove('active'); applyPrices(yearly); });
 
     // Count-up
     function countUp(el){ const t=parseInt(el.dataset.target),d=1600,s=t/(d/16); let v=0; const i=setInterval(()=>{ v+=s; if(v>=t){el.textContent=t;clearInterval(i);}else{el.textContent=Math.floor(v);} },16); }
